@@ -39,8 +39,13 @@ namespace ExchangeOffice
             {
                 temp = 0;
             }
-            cmd = new SqlCommand("EXEC InsertIntoUsers('@" + NameTB.Text + "','@" + SurnameTB.Text + "' , '@" + temp + "' )",con);
+            cmd = new SqlCommand("EXEC InsertIntoUsers @Name = '" + NameTB.Text + "',@Surname = '" + SurnameTB.Text + "' , @IsActive = " + temp ,con);
             cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("Select * From Users", con);
+            var reader = cmd.ExecuteReader(); 
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            dataGridView1.DataSource = dt;
             MessageBox.Show("Your data has been saved in the Database");
             con.Close(); 
 
@@ -49,6 +54,24 @@ namespace ExchangeOffice
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            cmd = new SqlCommand("Select * From Users", con);
+            var reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            dataGridView1.DataSource = dt;
+            con.Close();
+
 
         }
     }
