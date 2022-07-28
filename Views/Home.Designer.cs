@@ -1,6 +1,6 @@
 ﻿namespace ExchangeOffice
 {
-    partial class Form1
+    partial class Home
     {
         /// <summary>
         /// Required designer variable.
@@ -46,7 +46,8 @@
             this.exchangeOfficeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(900, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -60,58 +61,59 @@
             this.cLSCurrencyToolStripMenuItem,
             this.cLSCurrencyToolStripMenuItem1});
             this.exchangeOfficeToolStripMenuItem.Name = "exchangeOfficeToolStripMenuItem";
-            this.exchangeOfficeToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.exchangeOfficeToolStripMenuItem.Size = new System.Drawing.Size(60, 26);
             this.exchangeOfficeToolStripMenuItem.Text = "Menu";
             // 
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.usersToolStripMenuItem.Text = "Users";
             this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // officialRatesToolStripMenuItem
             // 
             this.officialRatesToolStripMenuItem.Name = "officialRatesToolStripMenuItem";
-            this.officialRatesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.officialRatesToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.officialRatesToolStripMenuItem.Text = "OfficialRates";
             this.officialRatesToolStripMenuItem.Click += new System.EventHandler(this.officialRatesToolStripMenuItem_Click);
             // 
             // exchageRatesToolStripMenuItem
             // 
             this.exchageRatesToolStripMenuItem.Name = "exchageRatesToolStripMenuItem";
-            this.exchageRatesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exchageRatesToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.exchageRatesToolStripMenuItem.Text = "ExchageRates";
             this.exchageRatesToolStripMenuItem.Click += new System.EventHandler(this.exchageRatesToolStripMenuItem_Click);
             // 
             // operationsToolStripMenuItem
             // 
             this.operationsToolStripMenuItem.Name = "operationsToolStripMenuItem";
-            this.operationsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.operationsToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.operationsToolStripMenuItem.Text = "Operations";
             this.operationsToolStripMenuItem.Click += new System.EventHandler(this.operationsToolStripMenuItem_Click);
             // 
             // cLSCurrencyToolStripMenuItem
             // 
             this.cLSCurrencyToolStripMenuItem.Name = "cLSCurrencyToolStripMenuItem";
-            this.cLSCurrencyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cLSCurrencyToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
             this.cLSCurrencyToolStripMenuItem.Text = "CLS_Currency";
             this.cLSCurrencyToolStripMenuItem.Click += new System.EventHandler(this.cLSCurrencyToolStripMenuItem_Click);
             // 
             // cLSCurrencyToolStripMenuItem1
             // 
             this.cLSCurrencyToolStripMenuItem1.Name = "cLSCurrencyToolStripMenuItem1";
-            this.cLSCurrencyToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.cLSCurrencyToolStripMenuItem1.Size = new System.Drawing.Size(220, 26);
             this.cLSCurrencyToolStripMenuItem1.Text = "CLS_OperationType";
             this.cLSCurrencyToolStripMenuItem1.Click += new System.EventHandler(this.cLSCurrencyToolStripMenuItem1_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(900, 562);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Exchange Office";
             this.menuStrip1.ResumeLayout(false);

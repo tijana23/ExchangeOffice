@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace ExchangeOffice
 {
-    public partial class Form2 : System.Windows.Forms.Form
+    public partial class Users : System.Windows.Forms.Form
     {
         SqlConnection con = new SqlConnection("Data Source=DESKTOP-A2PCMDA;Initial Catalog=ExchangeOffice;Integrated Security=True");
         SqlCommand cmd;
         SqlDataAdapter adapter;
         DataTable dt;
-        public Form2()
+        public Users()
         {
             InitializeComponent();
         }
@@ -62,15 +62,20 @@ namespace ExchangeOffice
              
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ShowData_Click(object sender, EventArgs e)
         {
-            con.Open();
-            cmd = new SqlCommand("Select * From Users", con);
-            var reader = cmd.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(reader);
-            dataGridView1.DataSource = dt;
-            con.Close();
+            Entity myExchangeDb = new Entity();
+            var allUsers = myExchangeDb.Users.ToList<User>();
+            dataGridView1.DataSource= allUsers;
+
+
+            //con.Open();
+            //cmd = new SqlCommand("Select * From Users", con);
+            //var reader = cmd.ExecuteReader();
+            //DataTable dt = new DataTable();
+            //dt.Load(reader);
+            //dataGridView1.DataSource = dt;
+            //con.Close();
 
 
         }
