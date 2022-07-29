@@ -12,23 +12,30 @@ namespace ExchangeOffice
 {
     public partial class OfficialRates : System.Windows.Forms.Form
     {
+        Entity myExchangeDb = new Entity();
         public OfficialRates()
         {
             InitializeComponent();
+            var allCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
+            foreach(var curr in allCurrencies)
+            {
+                CurrencyCB.Items.Add(curr.CurrencyId);
+            }
+
         }
 
         private void Insert_Click(object sender, EventArgs e)
         {
-            var newOR = new OfficialRate();
-            newOR.ValidityDate = ValidDateControl.Value;
+            OfficialRate or = new OfficialRate();
+            or.ValidityDate = ValidDateControl.Value;
+            //or.Currency = CurrencyCB.SelectedItem;
+            or.Currency = 5;
             //newOR.Currency = curencyControl.selectitem.ID
-            newOR.Currency = 5;
-            newOR.Rate = System.Convert.ToDouble(textBox2.Text);
-            newOR.IsActive = checkBox1.Checked ? 1 : 0;
-
-            var myDatabes = new Entity();
-            myDatabes.OfficialRates.Add(newOR);
-            myDatabes.SaveChanges();
+            or.Rate = System.Convert.ToDouble(RateTB.Text);
+            or.IsActive = IsActiveCB.Checked ? 1 : 0;
+            myExchangeDb.OfficialRates.Add(or);
+            myExchangeDb.SaveChanges();
+            MessageBox.Show("Your data has been saved in the Database");
 
 
         }
@@ -42,6 +49,13 @@ namespace ExchangeOffice
         private void Delete_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ShowData_Click(object sender, EventArgs e)
+        {
+            Entity myExchangeDb = new Entity();
+            var allOR = myExchangeDb.OfficialRates.ToList<OfficialRate>();
+            dataGridView1.DataSource = allOR;
         }
     }
 }

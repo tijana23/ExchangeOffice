@@ -34,7 +34,7 @@
             this.InsertButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
-            this.ActiveBoxCB = new System.Windows.Forms.CheckBox();
+            this.IsActiveCB = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.NameTB = new System.Windows.Forms.TextBox();
             this.ShowData = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(132, 40);
+            this.label2.Location = new System.Drawing.Point(132, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 20);
             this.label2.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             // SurnameTB
             // 
-            this.SurnameTB.Location = new System.Drawing.Point(220, 44);
+            this.SurnameTB.Location = new System.Drawing.Point(220, 47);
             this.SurnameTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SurnameTB.Name = "SurnameTB";
             this.SurnameTB.Size = new System.Drawing.Size(257, 26);
@@ -74,11 +74,12 @@
             // 
             // InsertButton
             // 
-            this.InsertButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.InsertButton.Location = new System.Drawing.Point(129, 124);
+            this.InsertButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InsertButton.Location = new System.Drawing.Point(129, 133);
             this.InsertButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.InsertButton.Name = "InsertButton";
-            this.InsertButton.Size = new System.Drawing.Size(85, 27);
+            this.InsertButton.Size = new System.Drawing.Size(85, 35);
             this.InsertButton.TabIndex = 6;
             this.InsertButton.Text = "Insert";
             this.InsertButton.UseVisualStyleBackColor = true;
@@ -86,10 +87,12 @@
             // 
             // UpdateButton
             // 
-            this.UpdateButton.Location = new System.Drawing.Point(220, 124);
+            this.UpdateButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.UpdateButton.Location = new System.Drawing.Point(220, 133);
             this.UpdateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(85, 27);
+            this.UpdateButton.Size = new System.Drawing.Size(85, 35);
             this.UpdateButton.TabIndex = 7;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
@@ -97,33 +100,34 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteButton.Location = new System.Drawing.Point(129, 164);
+            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteButton.Location = new System.Drawing.Point(129, 176);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(85, 27);
+            this.DeleteButton.Size = new System.Drawing.Size(85, 35);
             this.DeleteButton.TabIndex = 8;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // ActiveBoxCB
+            // IsActiveCB
             // 
-            this.ActiveBoxCB.AutoSize = true;
-            this.ActiveBoxCB.Location = new System.Drawing.Point(220, 84);
-            this.ActiveBoxCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ActiveBoxCB.Name = "ActiveBoxCB";
-            this.ActiveBoxCB.Size = new System.Drawing.Size(74, 24);
-            this.ActiveBoxCB.TabIndex = 9;
-            this.ActiveBoxCB.Text = "Active";
-            this.ActiveBoxCB.UseVisualStyleBackColor = true;
+            this.IsActiveCB.AutoSize = true;
+            this.IsActiveCB.Location = new System.Drawing.Point(220, 90);
+            this.IsActiveCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.IsActiveCB.Name = "IsActiveCB";
+            this.IsActiveCB.Size = new System.Drawing.Size(74, 24);
+            this.IsActiveCB.TabIndex = 9;
+            this.IsActiveCB.Text = "Active";
+            this.IsActiveCB.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 204);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 219);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -142,9 +146,11 @@
             // 
             // ShowData
             // 
-            this.ShowData.Location = new System.Drawing.Point(220, 163);
+            this.ShowData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ShowData.Location = new System.Drawing.Point(220, 175);
             this.ShowData.Name = "ShowData";
-            this.ShowData.Size = new System.Drawing.Size(175, 29);
+            this.ShowData.Size = new System.Drawing.Size(175, 37);
             this.ShowData.TabIndex = 12;
             this.ShowData.Text = "Show Data";
             this.ShowData.UseVisualStyleBackColor = true;
@@ -159,7 +165,7 @@
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.NameTB, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.ActiveBoxCB, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.IsActiveCB, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.SurnameTB, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.InsertButton, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.DeleteButton, 0, 4);
@@ -170,11 +176,11 @@
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1087, 693);
             this.tableLayoutPanel1.TabIndex = 13;
@@ -203,7 +209,7 @@
         private System.Windows.Forms.Button InsertButton;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button DeleteButton;
-        private System.Windows.Forms.CheckBox ActiveBoxCB;
+        private System.Windows.Forms.CheckBox IsActiveCB;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox NameTB;
         private System.Windows.Forms.Button ShowData;

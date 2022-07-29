@@ -20,10 +20,25 @@ namespace ExchangeOffice
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Users to = new Users();
-            to.Show();
-            to.MdiParent = this;
-            //MyContainer.Controls.Add(to);
+            bool Isopen = false;
+            foreach (Form f in Application.OpenForms)
+            {
+                if(f.Text == "OfficialRates")
+                {
+                    Isopen = true;
+                    f.Show();
+                    f.MdiParent = this;
+                    break;
+                }
+
+            }
+            if (Isopen == false)
+            {
+                Users to = new Users();
+                to.Show();
+                to.MdiParent = this;
+                //MyContainer.Controls.Add(to);
+            }
             
             
         }
@@ -32,6 +47,7 @@ namespace ExchangeOffice
         {
             OfficialRates to = new OfficialRates();
             to.Show();
+            to.MdiParent = this;
 
         }
 
@@ -39,25 +55,30 @@ namespace ExchangeOffice
         {
             ExchangeRates to = new ExchangeRates();
             to.Show();
+            to.MdiParent = this;
         }
 
         private void operationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Operations to = new Operations();
             to.Show();
+            to.MdiParent = this;
         }
 
         private void cLSCurrencyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CLSCurrency to = new CLSCurrency();
             to.Show();
+            to.MdiParent = this;
 
         }
+
 
         private void cLSCurrencyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CLSOperationType to = new CLSOperationType();
             to.Show();
+            to.MdiParent = this;
         }
     }
 }

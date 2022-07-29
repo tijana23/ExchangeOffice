@@ -13,10 +13,7 @@ namespace ExchangeOffice
 {
     public partial class Users : System.Windows.Forms.Form
     {
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-A2PCMDA;Initial Catalog=ExchangeOffice;Integrated Security=True");
-        SqlCommand cmd;
-        SqlDataAdapter adapter;
-        DataTable dt;
+        Entity myExchangeDb = new Entity();
         public Users()
         {
             InitializeComponent();
@@ -29,25 +26,22 @@ namespace ExchangeOffice
 
         private void InsertButton_Click(object sender, EventArgs e)
         {
-            con.Open();
-            int temp;
-            if(ActiveBoxCB.Checked = true)
+            User user = new User();
+            user.Name = NameTB.Text;
+            user.Surname = SurnameTB.Text;
+            if (IsActiveCB.Checked = true)
             {
-                temp = 1;
+                user.IsActive = 1;
             }
             else
             {
-                temp = 0;
+                user.IsActive = 0;
             }
-            cmd = new SqlCommand("EXEC InsertIntoUsers @Name = '" + NameTB.Text + "',@Surname = '" + SurnameTB.Text + "' , @IsActive = " + temp ,con);
-            cmd.ExecuteNonQuery();
-            cmd = new SqlCommand("Select * From Users", con);
-            var reader = cmd.ExecuteReader(); 
-            DataTable dt = new DataTable();
-            dt.Load(reader);
-            dataGridView1.DataSource = dt;
+            myExchangeDb.Users.Add(user);
+            myExchangeDb.SaveChanges();
+            
             MessageBox.Show("Your data has been saved in the Database");
-            con.Close(); 
+             
 
 
         }
