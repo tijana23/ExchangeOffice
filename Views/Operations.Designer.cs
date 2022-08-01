@@ -114,7 +114,7 @@
             // 
             this.OperationDatePicker.Location = new System.Drawing.Point(272, 89);
             this.OperationDatePicker.Name = "OperationDatePicker";
-            this.OperationDatePicker.Size = new System.Drawing.Size(200, 26);
+            this.OperationDatePicker.Size = new System.Drawing.Size(291, 26);
             this.OperationDatePicker.TabIndex = 6;
             // 
             // AmountTB
@@ -169,7 +169,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1340, 182);
+            this.dataGridView1.Size = new System.Drawing.Size(1340, 283);
             this.dataGridView1.TabIndex = 15;
             // 
             // tableLayoutPanel1
@@ -207,7 +207,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1346, 532);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1346, 633);
             this.tableLayoutPanel1.TabIndex = 16;
             // 
             // ShowData
@@ -258,7 +258,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1346, 532);
+            this.ClientSize = new System.Drawing.Size(1346, 633);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Operations";
             this.Text = "Operations";

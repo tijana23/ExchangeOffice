@@ -49,7 +49,7 @@
             // 
             this.ValidDateControl.Location = new System.Drawing.Point(186, 3);
             this.ValidDateControl.Name = "ValidDateControl";
-            this.ValidDateControl.Size = new System.Drawing.Size(169, 26);
+            this.ValidDateControl.Size = new System.Drawing.Size(294, 26);
             this.ValidDateControl.TabIndex = 0;
             // 
             // label1
@@ -101,10 +101,11 @@
             // 
             // Insert
             // 
-            this.Insert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Insert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Insert.Location = new System.Drawing.Point(105, 163);
             this.Insert.Name = "Insert";
-            this.Insert.Size = new System.Drawing.Size(75, 29);
+            this.Insert.Size = new System.Drawing.Size(75, 34);
             this.Insert.TabIndex = 8;
             this.Insert.Text = "Insert";
             this.Insert.UseVisualStyleBackColor = true;
@@ -112,10 +113,11 @@
             // 
             // Update
             // 
-            this.Update.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Update.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Update.Location = new System.Drawing.Point(105, 203);
             this.Update.Name = "Update";
-            this.Update.Size = new System.Drawing.Size(75, 30);
+            this.Update.Size = new System.Drawing.Size(75, 34);
             this.Update.TabIndex = 9;
             this.Update.Text = "Update";
             this.Update.UseVisualStyleBackColor = true;
@@ -123,9 +125,11 @@
             // 
             // Delete
             // 
+            this.Delete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.Delete.Location = new System.Drawing.Point(186, 163);
             this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(75, 31);
+            this.Delete.Size = new System.Drawing.Size(75, 34);
             this.Delete.TabIndex = 10;
             this.Delete.Text = "Delete";
             this.Delete.UseVisualStyleBackColor = true;
@@ -142,6 +146,8 @@
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(911, 418);
             this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // tableLayoutPanel1
             // 
@@ -185,9 +191,11 @@
             // 
             // ShowData
             // 
+            this.ShowData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.ShowData.Location = new System.Drawing.Point(186, 203);
             this.ShowData.Name = "ShowData";
-            this.ShowData.Size = new System.Drawing.Size(139, 30);
+            this.ShowData.Size = new System.Drawing.Size(139, 34);
             this.ShowData.TabIndex = 14;
             this.ShowData.Text = "Show data";
             this.ShowData.UseVisualStyleBackColor = true;

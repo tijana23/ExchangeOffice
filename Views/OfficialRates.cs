@@ -13,6 +13,7 @@ namespace ExchangeOffice
     public partial class OfficialRates : System.Windows.Forms.Form
     {
         Entity myExchangeDb = new Entity();
+        int temp;
         public OfficialRates()
         {
             InitializeComponent();
@@ -36,18 +37,43 @@ namespace ExchangeOffice
             myExchangeDb.OfficialRates.Add(or);
             myExchangeDb.SaveChanges();
             MessageBox.Show("Your data has been saved in the Database");
+            var allOR = myExchangeDb.OfficialRates.ToList<OfficialRate>();
+            dataGridView1.DataSource = allOR;
+
 
 
         }
 
         private void Update_Click(object sender, EventArgs e)
         {
+            OfficialRate or = myExchangeDb.OfficialRates.Where(o => o.OfficialRatesId == temp).FirstOrDefault();
+            or.ValidityDate = ValidDateControl.Value;
+            //or.Currency = CurrencyCB.Text;
+            or.Currency = 3;
+            or.Rate = double.Parse(RateTB.Text);
+            if (IsActiveCB.Checked == true)
+            {
+                or.IsActive = 1;
 
+            }
+            else
+            {
+                or.IsActive = 0;
+            }
+            myExchangeDb.SaveChanges();
+            var allOR = myExchangeDb.OfficialRates.ToList<OfficialRate>();
+            dataGridView1.DataSource = allOR;
 
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
+
+            OfficialRate or = myExchangeDb.OfficialRates.Where(o => o.OfficialRatesId == temp).FirstOrDefault();
+            IsActiveCB.Checked = false;
+            or.IsActive = 0;
+            var allOR = myExchangeDb.OfficialRates.ToList<OfficialRate>();
+            dataGridView1.DataSource = allOR;
 
         }
 
@@ -57,5 +83,25 @@ namespace ExchangeOffice
             var allOR = myExchangeDb.OfficialRates.ToList<OfficialRate>();
             dataGridView1.DataSource = allOR;
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[index];
+            temp = int.Parse(selectedRow.Cells[0].Value.ToString());
+            ValidDateControl.Value = (DateTime)selectedRow.Cells[1].Value;
+            CurrencyCB.Text = selectedRow.Cells[2].Value.ToString();
+            RateTB.Text = selectedRow.Cells[3].Value.ToString();
+            if (selectedRow.Cells[4].Value.ToString() == "1")
+            {
+                IsActiveCB.Checked = true;
+            }
+            else
+            {
+                IsActiveCB.Checked = false;
+            }
+
+        }
+
     }
 }
