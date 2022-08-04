@@ -32,7 +32,7 @@
             this.exchangeOfficeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.officialRatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exchageRatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exchangeRatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cLSCurrencyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cLSCurrencyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,57 +56,57 @@
             this.exchangeOfficeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usersToolStripMenuItem,
             this.officialRatesToolStripMenuItem,
-            this.exchageRatesToolStripMenuItem,
+            this.exchangeRatesToolStripMenuItem,
             this.operationsToolStripMenuItem,
             this.cLSCurrencyToolStripMenuItem,
             this.cLSCurrencyToolStripMenuItem1});
             this.exchangeOfficeToolStripMenuItem.Name = "exchangeOfficeToolStripMenuItem";
-            this.exchangeOfficeToolStripMenuItem.Size = new System.Drawing.Size(60, 26);
+            this.exchangeOfficeToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
             this.exchangeOfficeToolStripMenuItem.Text = "Menu";
             // 
             // usersToolStripMenuItem
             // 
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
-            this.usersToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this.usersToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.usersToolStripMenuItem.Text = "Users";
             this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // officialRatesToolStripMenuItem
             // 
             this.officialRatesToolStripMenuItem.Name = "officialRatesToolStripMenuItem";
-            this.officialRatesToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this.officialRatesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.officialRatesToolStripMenuItem.Text = "OfficialRates";
             this.officialRatesToolStripMenuItem.Click += new System.EventHandler(this.officialRatesToolStripMenuItem_Click);
             // 
-            // exchageRatesToolStripMenuItem
+            // exchangeRatesToolStripMenuItem
             // 
-            this.exchageRatesToolStripMenuItem.Name = "exchageRatesToolStripMenuItem";
-            this.exchageRatesToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
-            this.exchageRatesToolStripMenuItem.Text = "ExchageRates";
-            this.exchageRatesToolStripMenuItem.Click += new System.EventHandler(this.exchageRatesToolStripMenuItem_Click);
+            this.exchangeRatesToolStripMenuItem.Name = "exchangeRatesToolStripMenuItem";
+            this.exchangeRatesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exchangeRatesToolStripMenuItem.Text = "ExchangeRates";
+            this.exchangeRatesToolStripMenuItem.Click += new System.EventHandler(this.exchangeRatesToolStripMenuItem_Click);
             // 
             // operationsToolStripMenuItem
             // 
             this.operationsToolStripMenuItem.Name = "operationsToolStripMenuItem";
-            this.operationsToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this.operationsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.operationsToolStripMenuItem.Text = "Operations";
             this.operationsToolStripMenuItem.Click += new System.EventHandler(this.operationsToolStripMenuItem_Click);
             // 
             // cLSCurrencyToolStripMenuItem
             // 
             this.cLSCurrencyToolStripMenuItem.Name = "cLSCurrencyToolStripMenuItem";
-            this.cLSCurrencyToolStripMenuItem.Size = new System.Drawing.Size(220, 26);
+            this.cLSCurrencyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.cLSCurrencyToolStripMenuItem.Text = "CLS_Currency";
             this.cLSCurrencyToolStripMenuItem.Click += new System.EventHandler(this.cLSCurrencyToolStripMenuItem_Click);
             // 
             // cLSCurrencyToolStripMenuItem1
             // 
             this.cLSCurrencyToolStripMenuItem1.Name = "cLSCurrencyToolStripMenuItem1";
-            this.cLSCurrencyToolStripMenuItem1.Size = new System.Drawing.Size(220, 26);
+            this.cLSCurrencyToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.cLSCurrencyToolStripMenuItem1.Text = "CLS_OperationType";
             this.cLSCurrencyToolStripMenuItem1.Click += new System.EventHandler(this.cLSCurrencyToolStripMenuItem1_Click);
             // 
-            // Form1
+            // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,7 +114,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "Form1";
+            this.Name = "Home";
             this.Text = "Exchange Office";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -129,7 +129,7 @@
         private System.Windows.Forms.ToolStripMenuItem exchangeOfficeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem officialRatesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exchageRatesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exchangeRatesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cLSCurrencyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cLSCurrencyToolStripMenuItem1;

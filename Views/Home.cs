@@ -48,7 +48,7 @@ namespace ExchangeOffice
             bool IsOpen = false;
             foreach(Form f in Application.OpenForms)
             {
-                if(f.Text == "OfficialRates")
+                if(f.Text == "Official Rates")
                 {
                     IsOpen = true;
                     f.Focus();
@@ -65,15 +65,15 @@ namespace ExchangeOffice
 
         }
 
-        private void exchageRatesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exchangeRatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool IsOpen = false;
-            foreach (Form f1 in Application.OpenForms)
+            foreach (Form f in Application.OpenForms)
             {
-                if (f1.Text == "ExchangeRates")
+                if (f.Text == "Exchange Rates")
                 {
                     IsOpen = true;
-                    f1.Focus();
+                    f.Focus();
                     break;
                 }
             }
@@ -111,26 +111,49 @@ namespace ExchangeOffice
 
         private void cLSCurrencyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ActiveMdiChild != null)
+            bool IsOpen = false;
+            foreach (Form f in Application.OpenForms)
             {
-                ActiveMdiChild.Close();
+                if (f.Text == "CLS_Currency")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
             }
-            CLSCurrency to = new CLSCurrency();
-            to.Show();
-            to.MdiParent = this;
+            if (IsOpen == false)
+            {
+                CLSCurrency to = new CLSCurrency();
+                to.Show();
+                to.MdiParent = this;
+
+            }
 
         }
 
 
         private void cLSCurrencyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (ActiveMdiChild != null)
+            bool IsOpen = false;
+
+
+            foreach (Form f in Application.OpenForms)
             {
-                ActiveMdiChild.Close();
+                if (f.Text == "CLS_OperationType")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
             }
-            CLSOperationType to = new CLSOperationType();
-            to.Show();
-            to.MdiParent = this;
+            if (IsOpen == false)
+            {
+                CLSOperationType to = new CLSOperationType();
+                to.Show();
+                to.MdiParent = this;
+               
+            }
+
         }
     }
 }
