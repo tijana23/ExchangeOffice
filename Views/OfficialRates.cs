@@ -14,14 +14,21 @@ namespace ExchangeOffice
     {
         Entity myExchangeDb = new Entity();
         int temp;
+        int temp2,temp3;
+        string temp4;
         public OfficialRates()
         {
             InitializeComponent();
-            var allCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
-            foreach(var curr in allCurrencies)
-            {
-                CurrencyCB.Items.Add(curr.CurrencyId);
-            }
+            //var allCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
+            //foreach(var curr in allCurrencies)
+            //{
+            //    CurrencyCB.Items.Add(curr.CurrencyId);
+            //}
+            var allMyCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
+            CurrencyCB.Items.Clear();
+            CurrencyCB.DataSource = allMyCurrencies;
+            CurrencyCB.DisplayMember = "Id";
+            CurrencyCB.ValueMember = "Name";
 
         }
 
@@ -29,9 +36,17 @@ namespace ExchangeOffice
         {
             OfficialRate or = new OfficialRate();
             or.ValidityDate = ValidDateControl.Value;
-            //or.Currency = CurrencyCB.SelectedItem;
-            or.Currency = 5;
-            //newOR.Currency = curencyControl.selectitem.ID
+            string cbtext = CurrencyCB.SelectedValue.ToString();
+            
+            var c = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
+            foreach (var curr in c)
+            {
+                if(curr.Name == cbtext)
+                {
+                    temp2 = curr.CurrencyId;
+                }
+            }
+            or.Currency = temp2;
             or.Rate = System.Convert.ToDouble(RateTB.Text);
             or.IsActive = IsActiveCB.Checked ? 1 : 0;
             myExchangeDb.OfficialRates.Add(or);
@@ -48,8 +63,7 @@ namespace ExchangeOffice
         {
             OfficialRate or = myExchangeDb.OfficialRates.Where(o => o.OfficialRatesId == temp).FirstOrDefault();
             or.ValidityDate = ValidDateControl.Value;
-            //or.Currency = CurrencyCB.Text;
-            or.Currency = 3;
+            or.Currency = int.Parse(CurrencyCB.Text);
             or.Rate = double.Parse(RateTB.Text);
             if (IsActiveCB.Checked == true)
             {
@@ -68,7 +82,6 @@ namespace ExchangeOffice
 
         private void Delete_Click(object sender, EventArgs e)
         {
-
             OfficialRate or = myExchangeDb.OfficialRates.Where(o => o.OfficialRatesId == temp).FirstOrDefault();
             IsActiveCB.Checked = false;
             or.IsActive = 0;
@@ -90,7 +103,16 @@ namespace ExchangeOffice
             DataGridViewRow selectedRow = dataGridView1.Rows[index];
             temp = int.Parse(selectedRow.Cells[0].Value.ToString());
             ValidDateControl.Value = (DateTime)selectedRow.Cells[1].Value;
-            CurrencyCB.Text = selectedRow.Cells[2].Value.ToString();
+            temp3 = int.Parse(selectedRow.Cells[2].Value.ToString());
+            var c = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
+            foreach (var curr in c)
+            {
+                if (curr.CurrencyId == temp3)
+                {
+                    temp4 = curr.Name;
+                }
+            }
+            CurrencyCB.Text = temp4;
             RateTB.Text = selectedRow.Cells[3].Value.ToString();
             if (selectedRow.Cells[4].Value.ToString() == "1")
             {

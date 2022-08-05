@@ -42,23 +42,39 @@ namespace ExchangeOffice
 
         private void InsertButton_Click(object sender, EventArgs e)
         {
-            User user = new User();
-            user.Name = NameTB.Text;
-            user.Surname = SurnameTB.Text;
-            if (IsActiveCB.Checked == true)
+            if (NameTB.Text == string.Empty)
             {
-                user.IsActive = 1;
+                MessageBox.Show("Please provide all the information");
+            }
+            else if (SurnameTB.Text == string.Empty)
+            {
+                MessageBox.Show("Please provide all the information");
+            }
+            else if (IsActiveCB.Text == string.Empty)
+            {
+                MessageBox.Show("Please provide all the information");
             }
             else
             {
-                user.IsActive = 0;
+                User user = new User();
+                user.Name = NameTB.Text;
+                user.Surname = SurnameTB.Text;
+                if (IsActiveCB.Checked == true)
+                {
+                    user.IsActive = 1;
+                }
+                else
+                {
+                    user.IsActive = 0;
+                }
+
+                myExchangeDb.Users.Add(user);
+                myExchangeDb.SaveChanges();
+
+                MessageBox.Show("Your information has been saved");
+                var allUsers = myExchangeDb.Users.ToList<User>();
+                dataGridView1.DataSource = allUsers;
             }
-            myExchangeDb.Users.Add(user);
-            myExchangeDb.SaveChanges();
-            
-            MessageBox.Show("Your data has been saved in the Database");
-            var allUsers = myExchangeDb.Users.ToList<User>();
-            dataGridView1.DataSource = allUsers;
 
         }
 
@@ -104,6 +120,36 @@ namespace ExchangeOffice
             //dataGridView1.DataSource = dt;
             //con.Close();
 
+
+        }
+
+        private void NameTB_Validating(object sender, CancelEventArgs e)
+        {
+            if(NameTB.Text == string.Empty)
+            {
+                MessageBox.Show("Please provide all the information");
+            }
+        }
+
+        private void SurnameTB_Validating(object sender, CancelEventArgs e)
+        {
+            if (SurnameTB.Text == string.Empty)
+            {
+                MessageBox.Show("Please provide all the information");
+            }
+        }
+
+        private void IsActiveCB_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IsActiveCB_Validating(object sender, CancelEventArgs e)
+        {
+            if (IsActiveCB.Text == string.Empty)
+            {
+                MessageBox.Show("Please provide all the information");
+            }
 
         }
     }

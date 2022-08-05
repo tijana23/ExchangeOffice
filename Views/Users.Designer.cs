@@ -47,9 +47,9 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(155, 0);
+            this.label1.Location = new System.Drawing.Point(140, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 20);
+            this.label1.Size = new System.Drawing.Size(50, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name :";
             // 
@@ -57,29 +57,28 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(132, 43);
+            this.label2.Location = new System.Drawing.Point(123, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 20);
+            this.label2.Size = new System.Drawing.Size(67, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Surname :";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // SurnameTB
             // 
-            this.SurnameTB.Location = new System.Drawing.Point(220, 47);
-            this.SurnameTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SurnameTB.Location = new System.Drawing.Point(196, 37);
             this.SurnameTB.Name = "SurnameTB";
-            this.SurnameTB.Size = new System.Drawing.Size(257, 26);
+            this.SurnameTB.Size = new System.Drawing.Size(229, 22);
             this.SurnameTB.TabIndex = 4;
+            this.SurnameTB.Validating += new System.ComponentModel.CancelEventHandler(this.SurnameTB_Validating);
             // 
             // InsertButton
             // 
             this.InsertButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.InsertButton.Location = new System.Drawing.Point(129, 133);
-            this.InsertButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.InsertButton.Location = new System.Drawing.Point(114, 105);
             this.InsertButton.Name = "InsertButton";
-            this.InsertButton.Size = new System.Drawing.Size(85, 35);
+            this.InsertButton.Size = new System.Drawing.Size(76, 28);
             this.InsertButton.TabIndex = 6;
             this.InsertButton.Text = "Insert";
             this.InsertButton.UseVisualStyleBackColor = true;
@@ -89,10 +88,9 @@
             // 
             this.UpdateButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.UpdateButton.Location = new System.Drawing.Point(220, 133);
-            this.UpdateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.UpdateButton.Location = new System.Drawing.Point(196, 105);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(85, 35);
+            this.UpdateButton.Size = new System.Drawing.Size(76, 28);
             this.UpdateButton.TabIndex = 7;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
@@ -102,10 +100,9 @@
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteButton.Location = new System.Drawing.Point(129, 176);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.DeleteButton.Location = new System.Drawing.Point(114, 139);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(85, 35);
+            this.DeleteButton.Size = new System.Drawing.Size(76, 28);
             this.DeleteButton.TabIndex = 8;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
@@ -114,44 +111,45 @@
             // IsActiveCB
             // 
             this.IsActiveCB.AutoSize = true;
-            this.IsActiveCB.Location = new System.Drawing.Point(220, 90);
-            this.IsActiveCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.IsActiveCB.Location = new System.Drawing.Point(196, 71);
             this.IsActiveCB.Name = "IsActiveCB";
-            this.IsActiveCB.Size = new System.Drawing.Size(74, 24);
+            this.IsActiveCB.Size = new System.Drawing.Size(66, 20);
             this.IsActiveCB.TabIndex = 9;
             this.IsActiveCB.Text = "Active";
             this.IsActiveCB.UseVisualStyleBackColor = true;
+            this.IsActiveCB.CheckedChanged += new System.EventHandler(this.IsActiveCB_CheckedChanged);
+            this.IsActiveCB.Validating += new System.ComponentModel.CancelEventHandler(this.IsActiveCB_Validating);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 219);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 173);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1081, 510);
+            this.dataGridView1.Size = new System.Drawing.Size(960, 408);
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // NameTB
             // 
-            this.NameTB.Location = new System.Drawing.Point(220, 4);
-            this.NameTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NameTB.Location = new System.Drawing.Point(196, 3);
             this.NameTB.Name = "NameTB";
-            this.NameTB.Size = new System.Drawing.Size(257, 26);
+            this.NameTB.Size = new System.Drawing.Size(229, 22);
             this.NameTB.TabIndex = 11;
+            this.NameTB.Validating += new System.ComponentModel.CancelEventHandler(this.NameTB_Validating);
             // 
             // ShowData
             // 
             this.ShowData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.ShowData.Location = new System.Drawing.Point(220, 175);
+            this.ShowData.Location = new System.Drawing.Point(196, 138);
+            this.ShowData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ShowData.Name = "ShowData";
-            this.ShowData.Size = new System.Drawing.Size(175, 37);
+            this.ShowData.Size = new System.Drawing.Size(156, 30);
             this.ShowData.TabIndex = 12;
             this.ShowData.Text = "Show Data";
             this.ShowData.UseVisualStyleBackColor = true;
@@ -174,25 +172,24 @@
             this.tableLayoutPanel1.Controls.Add(this.UpdateButton, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(6, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1087, 693);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(966, 554);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // Users
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1087, 693);
+            this.ClientSize = new System.Drawing.Size(966, 554);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Users";
             this.Text = "Users";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
