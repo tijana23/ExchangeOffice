@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\UsersHelper.cs" />
     <Compile Include="Models\CLS_Currency.cs" />
     <Compile Include="Models\CLS_OperationType.cs" />
     <Compile Include="Models\ExchangeRate.cs" />

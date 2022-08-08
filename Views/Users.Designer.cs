@@ -70,7 +70,6 @@
             this.SurnameTB.Name = "SurnameTB";
             this.SurnameTB.Size = new System.Drawing.Size(229, 22);
             this.SurnameTB.TabIndex = 4;
-            this.SurnameTB.Validating += new System.ComponentModel.CancelEventHandler(this.SurnameTB_Validating);
             // 
             // InsertButton
             // 
@@ -117,8 +116,6 @@
             this.IsActiveCB.TabIndex = 9;
             this.IsActiveCB.Text = "Active";
             this.IsActiveCB.UseVisualStyleBackColor = true;
-            this.IsActiveCB.CheckedChanged += new System.EventHandler(this.IsActiveCB_CheckedChanged);
-            this.IsActiveCB.Validating += new System.ComponentModel.CancelEventHandler(this.IsActiveCB_Validating);
             // 
             // dataGridView1
             // 
@@ -140,7 +137,6 @@
             this.NameTB.Name = "NameTB";
             this.NameTB.Size = new System.Drawing.Size(229, 22);
             this.NameTB.TabIndex = 11;
-            this.NameTB.Validating += new System.ComponentModel.CancelEventHandler(this.NameTB_Validating);
             // 
             // ShowData
             // 

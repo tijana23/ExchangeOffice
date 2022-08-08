@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,6 +23,18 @@ namespace ExchangeOffice
         private int temp;
         private void UpdateButton_Click(object sender, EventArgs e)
         {
+            if (NameTB.Text == string.Empty)
+            {
+                MessageBox.Show("Please select user");
+            }
+            else if (SurnameTB.Text == string.Empty)
+            {
+                MessageBox.Show("Please select user");
+            }
+            else if (IsActiveCB.Text == string.Empty)
+            {
+                MessageBox.Show("Please select user");
+            }
             User user = myExchangeDb.Users.Where(u => u.UsersId == temp).FirstOrDefault();
             user.Name = NameTB.Text;
             user.Surname = SurnameTB.Text;
@@ -34,6 +47,7 @@ namespace ExchangeOffice
             {
                 user.IsActive = 0;
             }
+
             myExchangeDb.SaveChanges();
             var allUsers = myExchangeDb.Users.ToList<User>();
             dataGridView1.DataSource = allUsers;
@@ -42,17 +56,29 @@ namespace ExchangeOffice
 
         private void InsertButton_Click(object sender, EventArgs e)
         {
-            if (NameTB.Text == string.Empty)
+            if(!Regex.Match(NameTB.Text, "^[a-z -']+$").Success)
             {
-                MessageBox.Show("Please provide all the information");
+                MessageBox.Show("Invalid format Name", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                NameTB.Text = "";
             }
-            else if (SurnameTB.Text == string.Empty)
+            if (!Regex.Match(SurnameTB.Text, "^[a-z -']+$").Success)
             {
-                MessageBox.Show("Please provide all the information");
+                MessageBox.Show("Invalid format Surname", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                SurnameTB.Text = "";
             }
-            else if (IsActiveCB.Text == string.Empty)
+
+            if (NameTB.Text == string.Empty || SurnameTB.Text == string.Empty || IsActiveCB.Text == string.Empty)
             {
                 MessageBox.Show("Please provide all the information");
+            }else if(!Regex.Match(NameTB.Text, "^[a-z -']+$").Success)
+            {
+                MessageBox.Show("Invalid format Name", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                NameTB.Text = "";
+            }else if (!Regex.Match(SurnameTB.Text, "^[a-z -']+$").Success)
+            {
+                MessageBox.Show("Invalid format Surname", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                SurnameTB.Text = "";
+
             }
             else
             {
@@ -123,34 +149,7 @@ namespace ExchangeOffice
 
         }
 
-        private void NameTB_Validating(object sender, CancelEventArgs e)
-        {
-            if(NameTB.Text == string.Empty)
-            {
-                MessageBox.Show("Please provide all the information");
-            }
-        }
 
-        private void SurnameTB_Validating(object sender, CancelEventArgs e)
-        {
-            if (SurnameTB.Text == string.Empty)
-            {
-                MessageBox.Show("Please provide all the information");
-            }
-        }
 
-        private void IsActiveCB_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void IsActiveCB_Validating(object sender, CancelEventArgs e)
-        {
-            if (IsActiveCB.Text == string.Empty)
-            {
-                MessageBox.Show("Please provide all the information");
-            }
-
-        }
     }
 }
