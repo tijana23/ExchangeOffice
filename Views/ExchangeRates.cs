@@ -19,11 +19,22 @@ namespace ExchangeOffice
             var allCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
             foreach (var curr in allCurrencies)
             {
-                CurrencyFromCB.Items.Add(curr.CurrencyId);
-                CurrencyToCB.Items.Add(curr.CurrencyId);
+                CurrencyFromCB.Items.Add(curr);
+                CurrencyToCB.Items.Add(curr);
 
 
             }
+            CurrencyToCB.DisplayMember = "Name";
+            CurrencyToCB.ValueMember = "CurrencyId";
+            CurrencyFromCB.DisplayMember = "Name";
+            CurrencyFromCB.ValueMember = "CurrencyId";
+            //var allMyCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
+            //CurrencyToCB.DataSource = allMyCurrencies;
+            //CurrencyToCB.DisplayMember = "Name";
+            //CurrencyToCB.ValueMember = "CurrencyId";
+            //CurrencyFromCB.DataSource = allMyCurrencies;
+            //CurrencyFromCB.DisplayMember = "Name";
+            //CurrencyFromCB.ValueMember = "CurrencyId";
         }
 
         private void Insert_Click(object sender, EventArgs e)
@@ -59,6 +70,13 @@ namespace ExchangeOffice
         {
             Entity myExchangeDb = new Entity();
             var allER = myExchangeDb.ExchangeRates.ToList<ExchangeRate>();
+            
+            dataGridView1.ColumnCount = 4;
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.Columns[0].DataPropertyName = "ExchangeRatesId";
+            dataGridView1.Columns[1].DataPropertyName = "ValidityDate";
+            dataGridView1.Columns[2].DataPropertyName = "CLS_Currency.Name";
+            dataGridView1.Columns[3].DataPropertyName = "Rate";
             dataGridView1.DataSource = allER;
         }
     }

@@ -56,30 +56,25 @@ namespace ExchangeOffice
 
         private void InsertButton_Click(object sender, EventArgs e)
         {
-            if(!Regex.Match(NameTB.Text, "^[a-z -']+$").Success)
+            if(!Regex.Match(NameTB.Text, "^[a-z -']+$").Success || !Regex.Match(SurnameTB.Text, "^[a-z -']+$").Success || IsActiveCB.Text == string.Empty)
             {
-                MessageBox.Show("Invalid format Name", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 NameTB.Text = "";
             }
-            if (!Regex.Match(SurnameTB.Text, "^[a-z -']+$").Success)
-            {
-                MessageBox.Show("Invalid format Surname", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                SurnameTB.Text = "";
-            }
+          
+            //if (NameTB.Text == string.Empty || SurnameTB.Text == string.Empty || IsActiveCB.Text == string.Empty)
+            //{
+            //    MessageBox.Show("Please provide all the information");
+            //}else if(!Regex.Match(NameTB.Text, "^[a-z -']+$").Success)
+            //{
+            //    MessageBox.Show("Invalid format Name", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    NameTB.Text = "";
+            //}else if (!Regex.Match(SurnameTB.Text, "^[a-z -']+$").Success)
+            //{
+            //    MessageBox.Show("Invalid format Surname", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    SurnameTB.Text = "";
 
-            if (NameTB.Text == string.Empty || SurnameTB.Text == string.Empty || IsActiveCB.Text == string.Empty)
-            {
-                MessageBox.Show("Please provide all the information");
-            }else if(!Regex.Match(NameTB.Text, "^[a-z -']+$").Success)
-            {
-                MessageBox.Show("Invalid format Name", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                NameTB.Text = "";
-            }else if (!Regex.Match(SurnameTB.Text, "^[a-z -']+$").Success)
-            {
-                MessageBox.Show("Invalid format Surname", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                SurnameTB.Text = "";
-
-            }
+            //}
             else
             {
                 User user = new User();

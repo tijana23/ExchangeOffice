@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace ExchangeOffice
 {
@@ -19,41 +22,59 @@ namespace ExchangeOffice
         public OfficialRates()
         {
             InitializeComponent();
-            //var allCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
-            //foreach(var curr in allCurrencies)
-            //{
-            //    CurrencyCB.Items.Add(curr.CurrencyId);
-            //}
-            var allMyCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
-            CurrencyCB.Items.Clear();
-            CurrencyCB.DataSource = allMyCurrencies;
-            CurrencyCB.DisplayMember = "Id";
-            CurrencyCB.ValueMember = "Name";
+            var allCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
+            foreach (var curr in allCurrencies)
+            {
+                CurrencyCB.Items.Add(curr);
+            }
+            CurrencyCB.DisplayMember = "Name";
+            CurrencyCB.ValueMember = "CurrencyId";
 
         }
 
         private void Insert_Click(object sender, EventArgs e)
         {
-            OfficialRate or = new OfficialRate();
-            or.ValidityDate = ValidDateControl.Value;
-            string cbtext = CurrencyCB.SelectedValue.ToString();
-            
-            var c = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
-            foreach (var curr in c)
+            DateTime selectedDate = Convert.ToDateTime(ValidDateControl.Value);
+            DateTime todayDate = Convert.ToDateTime(DateTime.Now);
+
+            if (selectedDate < todayDate)
             {
-                if(curr.Name == cbtext)
-                {
-                    temp2 = curr.CurrencyId;
-                }
+                MessageBox.Show("Selected date Must be greater then Today's date" ,"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            or.Currency = temp2;
-            or.Rate = System.Convert.ToDouble(RateTB.Text);
-            or.IsActive = IsActiveCB.Checked ? 1 : 0;
-            myExchangeDb.OfficialRates.Add(or);
-            myExchangeDb.SaveChanges();
-            MessageBox.Show("Your data has been saved in the Database");
-            var allOR = myExchangeDb.OfficialRates.ToList<OfficialRate>();
-            dataGridView1.DataSource = allOR;
+
+            //DateTime dt = DateTime.ParseExact(ValidDateControl.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            //if (ValidDateControl.Value != "" && dt > DateTime.Today)
+            //{
+            //    MessageBox.Show("From Date should be earlier or equal To Today Date", MessageHelper.MessageType.Warning);
+            //}
+            else if (!Regex.Match(RateTB.Text, @"/^\d*\.?\d*$/").Success || IsActiveCB.Text == string.Empty)
+            {
+                MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                RateTB.Text = "";
+            }
+            else
+            {
+                OfficialRate or = new OfficialRate();
+                or.ValidityDate = ValidDateControl.Value;
+                string cbtext = CurrencyCB.SelectedValue.ToString();
+
+                var c = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
+                foreach (var curr in c)
+                {
+                    if (curr.Name == cbtext)
+                    {
+                        temp2 = curr.CurrencyId;
+                    }
+                }
+                or.Currency = temp2;
+                or.Rate = System.Convert.ToDouble(RateTB.Text);
+                or.IsActive = IsActiveCB.Checked ? 1 : 0;
+                myExchangeDb.OfficialRates.Add(or);
+                myExchangeDb.SaveChanges();
+                MessageBox.Show("Your data has been saved in the Database");
+                var allOR = myExchangeDb.OfficialRates.ToList<OfficialRate>();
+                dataGridView1.DataSource = allOR;
+            }
 
 
 
