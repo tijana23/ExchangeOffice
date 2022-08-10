@@ -12,6 +12,7 @@ namespace ExchangeOffice
 {
     public partial class CLSCurrency : System.Windows.Forms.Form
     {
+        Entity myExchangeDb = new Entity();
         public CLSCurrency()
         {
             InitializeComponent();
@@ -34,6 +35,14 @@ namespace ExchangeOffice
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+
+        }
+
+        private void ShowData_Click(object sender, EventArgs e)
+        {
+            var allCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
+            dataGridView1.DataSource = allCurrencies;
 
         }
     }

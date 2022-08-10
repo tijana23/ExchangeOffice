@@ -31,7 +31,7 @@ namespace ExchangeOffice
             {
                 MessageBox.Show("Please select user");
             }
-            else if (IsActiveCB.Text == string.Empty)
+            else if (IsActiveCB.Checked)
             {
                 MessageBox.Show("Please select user");
             }
@@ -60,6 +60,7 @@ namespace ExchangeOffice
             {
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 NameTB.Text = "";
+                SurnameTB.Text = "";
             }
           
             //if (NameTB.Text == string.Empty || SurnameTB.Text == string.Empty || IsActiveCB.Text == string.Empty)

@@ -70,14 +70,15 @@ namespace ExchangeOffice
         {
             Entity myExchangeDb = new Entity();
             var allER = myExchangeDb.ExchangeRates.ToList<ExchangeRate>();
-            
-            dataGridView1.ColumnCount = 4;
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.Columns[0].DataPropertyName = "ExchangeRatesId";
-            dataGridView1.Columns[1].DataPropertyName = "ValidityDate";
-            dataGridView1.Columns[2].DataPropertyName = "CLS_Currency.Name";
-            dataGridView1.Columns[3].DataPropertyName = "Rate";
             dataGridView1.DataSource = allER;
+
+            //dataGridView1.ColumnCount = 4;
+            //dataGridView1.AutoGenerateColumns = false;
+            //dataGridView1.Columns[0].DataPropertyName = "ExchangeRatesId";
+            //dataGridView1.Columns[1].DataPropertyName = "ValidityDate";
+            //dataGridView1.Columns[2].DataPropertyName = "CLS_Currency.Name";
+            //dataGridView1.Columns[3].DataPropertyName = "Rate";
+            //dataGridView1.DataSource = allER;
         }
     }
 }

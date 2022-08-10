@@ -26,6 +26,13 @@ namespace ExchangeOffice
         public string Surname { get; set; }
 
         public int? IsActive { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return Name + " " + Surname;
+            }
+        }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Operation> Operations { get; set; }

@@ -12,6 +12,7 @@ namespace ExchangeOffice
 {
     public partial class CLSOperationType : System.Windows.Forms.Form
     {
+        Entity myExchangeDb = new Entity();
         public CLSOperationType()
         {
             InitializeComponent();
@@ -30,6 +31,12 @@ namespace ExchangeOffice
         private void Delete_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ShowData_Click(object sender, EventArgs e)
+        {
+            var allop = myExchangeDb.CLS_OperationType.ToList<CLS_OperationType>();
+            dataGridView1.DataSource = allop;
         }
     }
 }
