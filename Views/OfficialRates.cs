@@ -47,26 +47,21 @@ namespace ExchangeOffice
             //{
             //    MessageBox.Show("From Date should be earlier or equal To Today Date", MessageHelper.MessageType.Warning);
             //}
-            else if (!Regex.Match(RateTB.Text, @"/^\d*\.?\d*$/").Success || IsActiveCB.Text == string.Empty)
+            else if (!Regex.Match(RateTB.Text, @"^[.][0-9]+$|^[0-9]*[.]{0,1}[0-9]*$").Success)
             {
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 RateTB.Text = "";
+            }
+            else if (IsActiveCB.Text == string.Empty)
+            {
+                MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 OfficialRate or = new OfficialRate();
                 or.ValidityDate = ValidDateControl.Value;
-                string cbtext = CurrencyCB.SelectedValue.ToString();
-
-                var c = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
-                foreach (var curr in c)
-                {
-                    if (curr.Name == cbtext)
-                    {
-                        temp2 = curr.CurrencyId;
-                    }
-                }
-                or.Currency = temp2;
+                CLS_Currency cbtext = (CLS_Currency)CurrencyCB.SelectedItem;
+                or.Currency = cbtext.CurrencyId;
                 or.Rate = System.Convert.ToDouble(RateTB.Text);
                 or.IsActive = IsActiveCB.Checked ? 1 : 0;
                 myExchangeDb.OfficialRates.Add(or);
@@ -84,7 +79,8 @@ namespace ExchangeOffice
         {
             OfficialRate or = myExchangeDb.OfficialRates.Where(o => o.OfficialRatesId == temp).FirstOrDefault();
             or.ValidityDate = ValidDateControl.Value;
-            or.Currency = int.Parse(CurrencyCB.Text);
+            CLS_Currency cbtext = (CLS_Currency)CurrencyCB.SelectedItem;
+            or.Currency = cbtext.CurrencyId;
             or.Rate = double.Parse(RateTB.Text);
             if (IsActiveCB.Checked == true)
             {
@@ -138,7 +134,7 @@ namespace ExchangeOffice
             if (selectedRow.Cells[4].Value.ToString() == "1")
             {
                 IsActiveCB.Checked = true;
-            }
+            }   
             else
             {
                 IsActiveCB.Checked = false;

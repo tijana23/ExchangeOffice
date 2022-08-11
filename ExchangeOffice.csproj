@@ -55,6 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\CLS_CurrencyBLL.cs" />
+    <Compile Include="BLL\CLS_OperationTypeBLL.cs" />
+    <Compile Include="BLL\ExchangeRatesBLL.cs" />
+    <Compile Include="BLL\OfficialRatesBLL.cs" />
+    <Compile Include="BLL\OperationsBLL.cs" />
     <Compile Include="BLL\UsersBLL.cs" />
     <Compile Include="Models\CLS_Currency.cs" />
     <Compile Include="Models\CLS_OperationType.cs" />

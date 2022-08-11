@@ -51,9 +51,9 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(193, 0);
+            this.label1.Location = new System.Drawing.Point(176, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 20);
+            this.label1.Size = new System.Drawing.Size(87, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Validity date :";
             // 
@@ -61,9 +61,9 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(202, 43);
+            this.label2.Location = new System.Drawing.Point(186, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 20);
+            this.label2.Size = new System.Drawing.Size(77, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Currency to:";
             // 
@@ -71,9 +71,9 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(180, 86);
+            this.label3.Location = new System.Drawing.Point(168, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(116, 20);
+            this.label3.Size = new System.Drawing.Size(95, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Currency from :";
             // 
@@ -81,43 +81,47 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(244, 129);
+            this.label4.Location = new System.Drawing.Point(221, 102);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 20);
+            this.label4.Size = new System.Drawing.Size(42, 16);
             this.label4.TabIndex = 3;
             this.label4.Text = "Rate :";
             // 
             // IsActiveCB
             // 
             this.IsActiveCB.AutoSize = true;
-            this.IsActiveCB.Location = new System.Drawing.Point(302, 175);
+            this.IsActiveCB.Location = new System.Drawing.Point(269, 138);
+            this.IsActiveCB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IsActiveCB.Name = "IsActiveCB";
-            this.IsActiveCB.Size = new System.Drawing.Size(74, 24);
+            this.IsActiveCB.Size = new System.Drawing.Size(66, 20);
             this.IsActiveCB.TabIndex = 4;
             this.IsActiveCB.Text = "Active";
             this.IsActiveCB.UseVisualStyleBackColor = true;
             // 
             // ValidDatePicker
             // 
-            this.ValidDatePicker.Location = new System.Drawing.Point(302, 3);
+            this.ValidDatePicker.Location = new System.Drawing.Point(269, 2);
+            this.ValidDatePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ValidDatePicker.Name = "ValidDatePicker";
-            this.ValidDatePicker.Size = new System.Drawing.Size(286, 26);
+            this.ValidDatePicker.Size = new System.Drawing.Size(255, 22);
             this.ValidDatePicker.TabIndex = 5;
             // 
             // rateCB
             // 
-            this.rateCB.Location = new System.Drawing.Point(302, 132);
+            this.rateCB.Location = new System.Drawing.Point(269, 104);
+            this.rateCB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rateCB.Name = "rateCB";
-            this.rateCB.Size = new System.Drawing.Size(100, 26);
+            this.rateCB.Size = new System.Drawing.Size(89, 22);
             this.rateCB.TabIndex = 8;
             // 
             // Insert
             // 
             this.Insert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Insert.Location = new System.Drawing.Point(221, 218);
+            this.Insert.Location = new System.Drawing.Point(196, 172);
+            this.Insert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Insert.Name = "Insert";
-            this.Insert.Size = new System.Drawing.Size(75, 37);
+            this.Insert.Size = new System.Drawing.Size(67, 30);
             this.Insert.TabIndex = 9;
             this.Insert.Text = "Insert";
             this.Insert.UseVisualStyleBackColor = true;
@@ -127,9 +131,10 @@
             // 
             this.Update.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.Update.Location = new System.Drawing.Point(302, 218);
+            this.Update.Location = new System.Drawing.Point(269, 172);
+            this.Update.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Update.Name = "Update";
-            this.Update.Size = new System.Drawing.Size(75, 37);
+            this.Update.Size = new System.Drawing.Size(67, 30);
             this.Update.TabIndex = 10;
             this.Update.Text = "Update";
             this.Update.UseVisualStyleBackColor = true;
@@ -139,9 +144,10 @@
             // 
             this.Delete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Delete.Location = new System.Drawing.Point(221, 261);
+            this.Delete.Location = new System.Drawing.Point(196, 206);
+            this.Delete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(75, 37);
+            this.Delete.Size = new System.Drawing.Size(67, 30);
             this.Delete.TabIndex = 11;
             this.Delete.Text = "Delete";
             this.Delete.UseVisualStyleBackColor = true;
@@ -152,12 +158,15 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 304);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 240);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1490, 426);
+            this.dataGridView1.Size = new System.Drawing.Size(1324, 341);
             this.dataGridView1.TabIndex = 12;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // tableLayoutPanel1
             // 
@@ -180,26 +189,28 @@
             this.tableLayoutPanel1.Controls.Add(this.CurrencyFromCB, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1496, 653);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1330, 522);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // ShowData
             // 
             this.ShowData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.ShowData.Location = new System.Drawing.Point(302, 261);
+            this.ShowData.Location = new System.Drawing.Point(269, 206);
+            this.ShowData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ShowData.Name = "ShowData";
-            this.ShowData.Size = new System.Drawing.Size(152, 37);
+            this.ShowData.Size = new System.Drawing.Size(135, 30);
             this.ShowData.TabIndex = 12;
             this.ShowData.Text = "Show Data";
             this.ShowData.UseVisualStyleBackColor = true;
@@ -208,25 +219,28 @@
             // CurrencyToCB
             // 
             this.CurrencyToCB.FormattingEnabled = true;
-            this.CurrencyToCB.Location = new System.Drawing.Point(302, 46);
+            this.CurrencyToCB.Location = new System.Drawing.Point(269, 36);
+            this.CurrencyToCB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CurrencyToCB.Name = "CurrencyToCB";
-            this.CurrencyToCB.Size = new System.Drawing.Size(121, 28);
+            this.CurrencyToCB.Size = new System.Drawing.Size(108, 24);
             this.CurrencyToCB.TabIndex = 13;
             // 
             // CurrencyFromCB
             // 
             this.CurrencyFromCB.FormattingEnabled = true;
-            this.CurrencyFromCB.Location = new System.Drawing.Point(302, 89);
+            this.CurrencyFromCB.Location = new System.Drawing.Point(269, 70);
+            this.CurrencyFromCB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CurrencyFromCB.Name = "CurrencyFromCB";
-            this.CurrencyFromCB.Size = new System.Drawing.Size(121, 28);
+            this.CurrencyFromCB.Size = new System.Drawing.Size(108, 24);
             this.CurrencyFromCB.TabIndex = 14;
             // 
             // ExchangeRates
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1496, 653);
+            this.ClientSize = new System.Drawing.Size(1330, 522);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ExchangeRates";
             this.Text = "Exchange Rates";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

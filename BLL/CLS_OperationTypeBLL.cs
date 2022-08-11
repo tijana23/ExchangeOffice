@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExchangeOffice.Helpers
+namespace ExchangeOffice.BLL
 {
-    internal class UsersHelper
+    internal class CLS_OperationTypeBLL
     {
-
     }
 }
