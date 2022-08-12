@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExchangeOffice.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace ExchangeOffice
     public partial class Users : System.Windows.Forms.Form
     {
         Entity myExchangeDb = new Entity();
+        UsersBLL users = new UsersBLL();
         public Users()
         {
             InitializeComponent();
@@ -35,79 +37,34 @@ namespace ExchangeOffice
             {
                 MessageBox.Show("Please select user");
             }
-            User user = myExchangeDb.Users.Where(u => u.UsersId == temp).FirstOrDefault();
-            user.Name = NameTB.Text;
-            user.Surname = SurnameTB.Text;
-            if (IsActiveCB.Checked == true)
-            {
-                user.IsActive = 1;
-
-            }
-            else
-            {
-                user.IsActive = 0;
-            }
-
-            myExchangeDb.SaveChanges();
-            var allUsers = myExchangeDb.Users.ToList<User>();
-            dataGridView1.DataSource = allUsers;
+            MessageBox.Show(users.update(temp, NameTB.Text, SurnameTB.Text, IsActiveCB.Checked));
+            dataGridView1.DataSource = users.ShowData();
 
         }
 
         private void InsertButton_Click(object sender, EventArgs e)
         {
-            if(!Regex.Match(NameTB.Text, "^[a-z -']+$").Success || !Regex.Match(SurnameTB.Text, "^[a-z -']+$").Success || IsActiveCB.Text == string.Empty)
+            if (!Regex.Match(NameTB.Text, "[a-zA-Z ]").Success || !Regex.Match(SurnameTB.Text, "[a-zA-Z ]").Success || IsActiveCB.Text == string.Empty)
             {
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 NameTB.Text = "";
                 SurnameTB.Text = "";
             }
-          
-            //if (NameTB.Text == string.Empty || SurnameTB.Text == string.Empty || IsActiveCB.Text == string.Empty)
-            //{
-            //    MessageBox.Show("Please provide all the information");
-            //}else if(!Regex.Match(NameTB.Text, "^[a-z -']+$").Success)
-            //{
-            //    MessageBox.Show("Invalid format Name", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    NameTB.Text = "";
-            //}else if (!Regex.Match(SurnameTB.Text, "^[a-z -']+$").Success)
-            //{
-            //    MessageBox.Show("Invalid format Surname", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    SurnameTB.Text = "";
-
-            //}
             else
             {
-                User user = new User();
-                user.Name = NameTB.Text;
-                user.Surname = SurnameTB.Text;
-                if (IsActiveCB.Checked == true)
-                {
-                    user.IsActive = 1;
-                }
-                else
-                {
-                    user.IsActive = 0;
-                }
 
-                myExchangeDb.Users.Add(user);
-                myExchangeDb.SaveChanges();
-
-                MessageBox.Show("Your information has been saved");
-                var allUsers = myExchangeDb.Users.ToList<User>();
-                dataGridView1.DataSource = allUsers;
+                users.insert(NameTB.Text, SurnameTB.Text, IsActiveCB.Checked);
+                MessageBox.Show(users.insert(NameTB.Text, SurnameTB.Text, IsActiveCB.Checked));
+                dataGridView1.DataSource = users.ShowData();
             }
 
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            User user = myExchangeDb.Users.Where(u => u.UsersId == temp).FirstOrDefault();
+            MessageBox.Show(users.delete(temp));
             IsActiveCB.Checked = false;
-            user.IsActive = 0;
-
-            var allUsers = myExchangeDb.Users.ToList<User>();
-            dataGridView1.DataSource = allUsers;
+            dataGridView1.DataSource = users.ShowData();
 
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -124,28 +81,18 @@ namespace ExchangeOffice
             else
             {
                 IsActiveCB.Checked = false;
-            }    
+            }
         }
 
         private void ShowData_Click(object sender, EventArgs e)
         {
-            Entity myExchangeDb = new Entity();
-            var allUsers = myExchangeDb.Users.ToList<User>();
-            dataGridView1.DataSource= allUsers;
-
-
-            //con.Open();
-            //cmd = new SqlCommand("Select * From Users", con);
-            //var reader = cmd.ExecuteReader();
-            //DataTable dt = new DataTable();
-            //dt.Load(reader);
-            //dataGridView1.DataSource = dt;
-            //con.Close();
-
+            dataGridView1.DataSource = users.ShowData();
 
         }
 
 
 
     }
+
 }
+

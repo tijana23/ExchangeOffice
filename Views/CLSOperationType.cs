@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExchangeOffice.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace ExchangeOffice
     {
         Entity myExchangeDb = new Entity();
         int temp;
+        CLS_OperationTypeBLL cop = new CLS_OperationTypeBLL();
         public CLSOperationType()
         {
             InitializeComponent();
@@ -27,7 +29,7 @@ namespace ExchangeOffice
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CodeTB.Text = "";
             }
-            else if (!Regex.Match(NameTB.Text, @"/^[a-zA-Z\s]{0,255}$/").Success)
+            else if (!Regex.Match(NameTB.Text, "[a-zA-Z ]").Success)
             {
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 NameTB.Text = "";
@@ -39,41 +41,30 @@ namespace ExchangeOffice
             }
             else
             {
-                CLS_OperationType c = new CLS_OperationType();
-                c.Code = CodeTB.Text;
-                c.Name = NameTB.Text;
-                c.IsActive = IsActiveCB.Checked ? 1 : 0;
-                myExchangeDb.CLS_OperationType.Add(c);
-                myExchangeDb.SaveChanges();
-                MessageBox.Show("Your data has been saved in the Database");
-                var allCo = myExchangeDb.CLS_OperationType.ToList<CLS_OperationType>();
-                dataGridView1.DataSource = allCo;
+                MessageBox.Show(cop.insert(CodeTB.Text, NameTB.Text, IsActiveCB.Checked));
+                dataGridView1.DataSource = cop.ShowData();
             }
 
         }
 
         private void Update_Click(object sender, EventArgs e)
         {
-            
-            CLS_OperationType c = myExchangeDb.CLS_OperationType.Where(o => o.OperationTypeId == temp).FirstOrDefault();
-            c.Code = CodeTB.Text;
-            c.Name = NameTB.Text;
-            c.IsActive = IsActiveCB.Checked ? 1 : 0;
-            myExchangeDb.SaveChanges();
-            var allCo = myExchangeDb.CLS_OperationType.ToList<CLS_OperationType>();
-            dataGridView1.DataSource = allCo;
+
+            MessageBox.Show(cop.update(temp, CodeTB.Text, NameTB.Text, IsActiveCB.Checked));
+            dataGridView1.DataSource = cop.ShowData();
 
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(cop.delete(temp));
+            IsActiveCB.Checked = false;
+            dataGridView1.DataSource = cop.ShowData();
         }
 
         private void ShowData_Click(object sender, EventArgs e)
         {
-            var allCo = myExchangeDb.CLS_OperationType.ToList<CLS_OperationType>();
-            dataGridView1.DataSource = allCo;
+            dataGridView1.DataSource = cop.ShowData();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExchangeOffice.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace ExchangeOffice
     {
         Entity myExchangeDb = new Entity();
         int temp;
+        OperationsBLL op = new OperationsBLL();
         public Operations()
         {
             InitializeComponent();
@@ -58,63 +60,36 @@ namespace ExchangeOffice
             {
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 AmountTB.Text = "";
-            }else if (OperationTypeIdCB.Text == string.Empty || UserIdCB.Text == string.Empty || CurrencyFromCB.Text == string.Empty || CurrencyToCB.Text == string.Empty)
+            }
+            else if (OperationTypeIdCB.Text == string.Empty || UserIdCB.Text == string.Empty || CurrencyFromCB.Text == string.Empty || CurrencyToCB.Text == string.Empty)
             {
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                Operation op = new Operation();
-                CLS_OperationType otype = (CLS_OperationType) OperationTypeIdCB.SelectedItem;
-                op.OperationTypeId = otype.OperationTypeId;
-                User user = (User)UserIdCB.SelectedItem;
-                op.UserId = user.UsersId;
-                op.OperationDate = OperationDatePicker.Value;
-                op.Amount = int.Parse(AmountTB.Text);
-                CLS_Currency cfrom = (CLS_Currency)CurrencyFromCB.SelectedItem;
-                CLS_Currency cto = (CLS_Currency)CurrencyToCB.SelectedItem;
-                op.CurrencyFrom = cfrom.CurrencyId;
-                op.CurrencyTo = cto.CurrencyId;
-                myExchangeDb.Operations.Add(op);
-                myExchangeDb.SaveChanges();
-                MessageBox.Show("Your data has been saved in the Database");
-                var allOP = myExchangeDb.Operations.ToList<Operation>();
-                dataGridView1.DataSource = allOP;
+                MessageBox.Show(op.insert(((CLS_OperationType)OperationTypeIdCB.SelectedItem).OperationTypeId, ((User)UserIdCB.SelectedItem).UsersId, OperationDatePicker.Value, int.Parse(AmountTB.Text), ((CLS_Currency)CurrencyFromCB.SelectedItem).CurrencyId, ((CLS_Currency)CurrencyToCB.SelectedItem).CurrencyId));
+                dataGridView1.DataSource = op.ShowData();
             }
 
         }
 
         private void Update_Click(object sender, EventArgs e)
         {
-        
-            Operation op = myExchangeDb.Operations.Where(o => o.OperationId == temp).FirstOrDefault();
-            CLS_OperationType otype = (CLS_OperationType)OperationTypeIdCB.SelectedItem;
-            op.OperationTypeId = otype.OperationTypeId;
-            User user = (User)UserIdCB.SelectedItem;
-            op.UserId = user.UsersId;
-            op.OperationDate = OperationDatePicker.Value;
-            op.Amount = int.Parse(AmountTB.Text);
-            CLS_Currency cfrom = (CLS_Currency)CurrencyFromCB.SelectedItem;
-            CLS_Currency cto = (CLS_Currency)CurrencyToCB.SelectedItem;
-            op.CurrencyFrom = cfrom.CurrencyId;
-            op.CurrencyTo = cto.CurrencyId;
-            myExchangeDb.SaveChanges();
-            var allOP = myExchangeDb.Operations.ToList<Operation>();
-            dataGridView1.DataSource = allOP;
+            MessageBox.Show(op.update(temp, ((CLS_OperationType)OperationTypeIdCB.SelectedItem).OperationTypeId, ((User)UserIdCB.SelectedItem).UsersId, OperationDatePicker.Value, int.Parse(AmountTB.Text), ((CLS_Currency)CurrencyFromCB.SelectedItem).CurrencyId, ((CLS_Currency)CurrencyToCB.SelectedItem).CurrencyId));
+            dataGridView1.DataSource = op.ShowData();
 
         }
 
         private void ShowData_Click(object sender, EventArgs e)
         {
-            Entity myExchangeDb = new Entity();
-            var allOP = myExchangeDb.Operations.ToList<Operation>();
-            dataGridView1.DataSource = allOP; 
+            OperationsBLL op = new OperationsBLL();
+            dataGridView1.DataSource = op.ShowData();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int to, from,op,user;
+            int to, from, op, user;
             int index = e.RowIndex;
             DataGridViewRow selectedRow = dataGridView1.Rows[index];
             temp = int.Parse(selectedRow.Cells[0].Value.ToString());
@@ -133,7 +108,7 @@ namespace ExchangeOffice
             //    {
             //        OperationTypeIdCB.Text = opp.Name;
             //    }
-               
+
             //}
             var users = myExchangeDb.Users.ToList<User>();
             foreach (var u in users)

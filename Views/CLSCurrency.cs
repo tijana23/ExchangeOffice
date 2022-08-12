@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExchangeOffice.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace ExchangeOffice
     {
         Entity myExchangeDb = new Entity();
         int temp;
+        CLS_CurrencyBLL curr = new CLS_CurrencyBLL();
         public CLSCurrency()
         {
             InitializeComponent();
@@ -27,42 +29,36 @@ namespace ExchangeOffice
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 CodeTB.Text = "";
             }
-            else if (!Regex.Match(NameTB.Text, @"/^[a-zA-Z\s]{0,255}$/").Success)
+            else if (!Regex.Match(NameTB.Text, "[a-zA-Z ]").Success)
             {
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 NameTB.Text = "";
 
-            }else if(IsActiveCB.Text == string.Empty)
+            }
+            else if (IsActiveCB.Text == string.Empty)
             {
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                CLS_Currency c = new CLS_Currency();
-                c.Code = CodeTB.Text;
-                c.Name = NameTB.Text;
-                c.IsActive = IsActiveCB.Checked ? 1 : 0;
-                myExchangeDb.CLS_Currency.Add(c);
-                myExchangeDb.SaveChanges();
-                MessageBox.Show("Your data has been saved in the Database");
+                MessageBox.Show(curr.insert(CodeTB.Text, NameTB.Text, IsActiveCB.Checked));
+                dataGridView1.DataSource = curr.ShowData();
             }
 
         }
 
         private void Update_Click(object sender, EventArgs e)
         {
-            CLS_Currency c = myExchangeDb.CLS_Currency.Where(o => o.CurrencyId == temp).FirstOrDefault();
-            c.Code = CodeTB.Text;
-            c.Name = NameTB.Text;
-            c.IsActive = IsActiveCB.Checked ? 1 : 0;
-            myExchangeDb.SaveChanges();
-            var allCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
-            dataGridView1.DataSource = allCurrencies;
+            MessageBox.Show(curr.update(temp, CodeTB.Text, NameTB.Text, IsActiveCB.Checked));
+            dataGridView1.DataSource = curr.ShowData();
 
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(curr.delete(temp));
+            IsActiveCB.Checked = false;
+            dataGridView1.DataSource = curr.ShowData();
 
         }
 
@@ -86,8 +82,8 @@ namespace ExchangeOffice
 
         private void ShowData_Click(object sender, EventArgs e)
         {
-            var allCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
-            dataGridView1.DataSource = allCurrencies;
+            CLS_CurrencyBLL curr = new CLS_CurrencyBLL();
+            dataGridView1.DataSource = curr.ShowData();
 
         }
     }

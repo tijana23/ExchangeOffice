@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExchangeOffice.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace ExchangeOffice
     {
         Entity myExchangeDb = new Entity();
         int temp;
+        ExchangeRatesBLL er = new ExchangeRatesBLL();
         public ExchangeRates()
         {
             InitializeComponent();
@@ -30,13 +32,6 @@ namespace ExchangeOffice
             CurrencyToCB.ValueMember = "CurrencyId";
             CurrencyFromCB.DisplayMember = "Name";
             CurrencyFromCB.ValueMember = "CurrencyId";
-            //var allMyCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
-            //CurrencyToCB.DataSource = allMyCurrencies;
-            //CurrencyToCB.DisplayMember = "Name";
-            //CurrencyToCB.ValueMember = "CurrencyId";
-            //CurrencyFromCB.DataSource = allMyCurrencies;
-            //CurrencyFromCB.DisplayMember = "Name";
-            //CurrencyFromCB.ValueMember = "CurrencyId";
         }
 
         private void Insert_Click(object sender, EventArgs e)
@@ -52,73 +47,40 @@ namespace ExchangeOffice
             {
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 rateCB.Text = "";
-            }else if(IsActiveCB.Text == string.Empty)
+            }
+            else if (IsActiveCB.Text == string.Empty)
             {
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                ExchangeRate er = new ExchangeRate();
-                er.ValidityDate = ValidDatePicker.Value;
-                //er.CurrencyFrom = System.Convert.ToString(CurrencyFromCB.SelectedItem);
-                //er.CurrencyTo = CurrencyToCB.SelectedItem;
-                CLS_Currency cfrom = (CLS_Currency)CurrencyFromCB.SelectedItem;
-                CLS_Currency cto = (CLS_Currency)CurrencyToCB.SelectedItem;
-                er.CurrencyFrom = cfrom.CurrencyId;
-                er.CurrencyTo = cto.CurrencyId;
-                er.Rate = System.Convert.ToDouble(rateCB.Text);
-                er.IsActive = IsActiveCB.Checked ? 1 : 0;
-                myExchangeDb.ExchangeRates.Add(er);
-                myExchangeDb.SaveChanges();
-                MessageBox.Show("Your data has been saved in the Database");
-                var allER = myExchangeDb.ExchangeRates.ToList<ExchangeRate>();
-                dataGridView1.DataSource = allER;
+
+                MessageBox.Show(er.insert(ValidDatePicker.Value, ((CLS_Currency)CurrencyFromCB.SelectedItem).CurrencyId, ((CLS_Currency)CurrencyToCB.SelectedItem).CurrencyId, System.Convert.ToDouble(rateCB.Text), IsActiveCB.Checked));
+                dataGridView1.DataSource = er.ShowData();
             }
-
-
-
 
         }
 
         private void Update_Click(object sender, EventArgs e)
         {
-            ExchangeRate er = myExchangeDb.ExchangeRates.Where(o => o.ExchangeRatesId == temp).FirstOrDefault();
-            er.ValidityDate = ValidDatePicker.Value;
-            CLS_Currency cfrom = (CLS_Currency)CurrencyFromCB.SelectedItem;
-            CLS_Currency cto = (CLS_Currency)CurrencyToCB.SelectedItem;
-            er.CurrencyFrom = cfrom.CurrencyId;
-            er.CurrencyTo = cto.CurrencyId;
-            er.IsActive = IsActiveCB.Checked ? 1 : 0;
-            myExchangeDb.SaveChanges();
-            var allER = myExchangeDb.ExchangeRates.ToList<ExchangeRate>();
-            dataGridView1.DataSource = allER;
+            MessageBox.Show(er.update(temp, ValidDatePicker.Value, ((CLS_Currency)CurrencyFromCB.SelectedItem).CurrencyId, ((CLS_Currency)CurrencyToCB.SelectedItem).CurrencyId, System.Convert.ToDouble(rateCB.Text), IsActiveCB.Checked));
+            dataGridView1.DataSource = er.ShowData();
 
 
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            ExchangeRate er = myExchangeDb.ExchangeRates.Where(o => o.ExchangeRatesId == temp).FirstOrDefault();
             IsActiveCB.Checked = false;
-            er.IsActive = 0;
-            var allER = myExchangeDb.ExchangeRates.ToList<ExchangeRate>();
-            dataGridView1.DataSource = allER;
+            MessageBox.Show(er.delete(temp));
+            dataGridView1.DataSource = er.ShowData();
 
         }
 
         private void ShowData_Click(object sender, EventArgs e)
         {
-            Entity myExchangeDb = new Entity();
-            var allER = myExchangeDb.ExchangeRates.ToList<ExchangeRate>();
-            dataGridView1.DataSource = allER;
-
-            //dataGridView1.ColumnCount = 4;
-            //dataGridView1.AutoGenerateColumns = false;
-            //dataGridView1.Columns[0].DataPropertyName = "ExchangeRatesId";
-            //dataGridView1.Columns[1].DataPropertyName = "ValidityDate";
-            //dataGridView1.Columns[2].DataPropertyName = "CLS_Currency.Name";
-            //dataGridView1.Columns[3].DataPropertyName = "Rate";
-            //dataGridView1.DataSource = allER;
+            ExchangeRatesBLL er = new ExchangeRatesBLL();
+            dataGridView1.DataSource = er.ShowData();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

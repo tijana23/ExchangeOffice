@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using ExchangeOffice.BLL;
 
 namespace ExchangeOffice
 {
@@ -17,8 +18,9 @@ namespace ExchangeOffice
     {
         Entity myExchangeDb = new Entity();
         int temp;
-        int temp2,temp3;
+        int temp2, temp3;
         string temp4;
+        OfficialRatesBLL of = new OfficialRatesBLL();
         public OfficialRates()
         {
             InitializeComponent();
@@ -39,7 +41,7 @@ namespace ExchangeOffice
 
             if (selectedDate < todayDate)
             {
-                MessageBox.Show("Selected date Must be greater then Today's date" ,"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Selected date Must be greater then Today's date", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             //DateTime dt = DateTime.ParseExact(ValidDateControl.Value, "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -58,17 +60,8 @@ namespace ExchangeOffice
             }
             else
             {
-                OfficialRate or = new OfficialRate();
-                or.ValidityDate = ValidDateControl.Value;
-                CLS_Currency cbtext = (CLS_Currency)CurrencyCB.SelectedItem;
-                or.Currency = cbtext.CurrencyId;
-                or.Rate = System.Convert.ToDouble(RateTB.Text);
-                or.IsActive = IsActiveCB.Checked ? 1 : 0;
-                myExchangeDb.OfficialRates.Add(or);
-                myExchangeDb.SaveChanges();
-                MessageBox.Show("Your data has been saved in the Database");
-                var allOR = myExchangeDb.OfficialRates.ToList<OfficialRate>();
-                dataGridView1.DataSource = allOR;
+                MessageBox.Show(of.insert(ValidDateControl.Value, ((CLS_Currency)CurrencyCB.SelectedItem).CurrencyId, System.Convert.ToDouble(RateTB.Text), IsActiveCB.Checked));
+                dataGridView1.DataSource = of.ShowData();
             }
 
 
@@ -77,41 +70,23 @@ namespace ExchangeOffice
 
         private void Update_Click(object sender, EventArgs e)
         {
-            OfficialRate or = myExchangeDb.OfficialRates.Where(o => o.OfficialRatesId == temp).FirstOrDefault();
-            or.ValidityDate = ValidDateControl.Value;
-            CLS_Currency cbtext = (CLS_Currency)CurrencyCB.SelectedItem;
-            or.Currency = cbtext.CurrencyId;
-            or.Rate = double.Parse(RateTB.Text);
-            if (IsActiveCB.Checked == true)
-            {
-                or.IsActive = 1;
-
-            }
-            else
-            {
-                or.IsActive = 0;
-            }
-            myExchangeDb.SaveChanges();
-            var allOR = myExchangeDb.OfficialRates.ToList<OfficialRate>();
-            dataGridView1.DataSource = allOR;
+            MessageBox.Show(of.update(temp, ValidDateControl.Value, ((CLS_Currency)CurrencyCB.SelectedItem).CurrencyId, System.Convert.ToDouble(RateTB.Text), IsActiveCB.Checked));
+            dataGridView1.DataSource = of.ShowData();
 
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            OfficialRate or = myExchangeDb.OfficialRates.Where(o => o.OfficialRatesId == temp).FirstOrDefault();
             IsActiveCB.Checked = false;
-            or.IsActive = 0;
-            var allOR = myExchangeDb.OfficialRates.ToList<OfficialRate>();
-            dataGridView1.DataSource = allOR;
+            MessageBox.Show(of.delete(temp));
+            dataGridView1.DataSource = of.ShowData();
 
         }
 
         private void ShowData_Click(object sender, EventArgs e)
         {
-            Entity myExchangeDb = new Entity();
-            var allOR = myExchangeDb.OfficialRates.ToList<OfficialRate>();
-            dataGridView1.DataSource = allOR;
+            OfficialRatesBLL or = new OfficialRatesBLL();
+            dataGridView1.DataSource = or.ShowData();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -134,7 +109,7 @@ namespace ExchangeOffice
             if (selectedRow.Cells[4].Value.ToString() == "1")
             {
                 IsActiveCB.Checked = true;
-            }   
+            }
             else
             {
                 IsActiveCB.Checked = false;
