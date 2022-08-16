@@ -35,7 +35,7 @@ namespace ExchangeOffice.BLL
         {
             CLS_OperationType cop = myExchangeDb.CLS_OperationType.Where(o => o.OperationTypeId == id).FirstOrDefault();
             cop.IsActive = 0;
-            return "Succefully delete";
+            return "Succefully deleted";
         }
         public string update(int id, string Code, string Name, bool? IsChecked)
         {

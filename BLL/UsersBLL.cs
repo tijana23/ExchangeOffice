@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace ExchangeOffice.BLL
 {
@@ -37,7 +38,7 @@ namespace ExchangeOffice.BLL
         {
             User user = myExchangeDb.Users.Where(u => u.UsersId == id).FirstOrDefault();
             user.IsActive = 0;
-            return "Succefully delete";
+            return "Succefully deleted";
         }
         public string update(int id, string Name, string Surname, bool? IsChecked)
         {

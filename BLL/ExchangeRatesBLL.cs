@@ -38,7 +38,7 @@ namespace ExchangeOffice.BLL
         {
             ExchangeRate er = myExchangeDb.ExchangeRates.Where(o => o.ExchangeRatesId == id).FirstOrDefault();
             er.IsActive = 0;
-            return "Succefully delete";
+            return "Succefully deleted";
         }
         public string update(int id, DateTime DatePicker, int CurrencyFrom, int CurrencyTo, double rate, bool? IsChecked)
         {
