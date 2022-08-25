@@ -11,7 +11,6 @@ namespace ExchangeOffice
             : base("name=Entity")
         {
         }
-
         public virtual DbSet<CLS_Currency> CLS_Currency { get; set; }
         public virtual DbSet<CLS_OperationType> CLS_OperationType { get; set; }
         public virtual DbSet<ExchangeRate> ExchangeRates { get; set; }

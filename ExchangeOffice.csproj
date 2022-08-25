@@ -39,10 +39,16 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Services" />
@@ -59,6 +65,7 @@
   <ItemGroup>
     <Compile Include="BLL\CLS_CurrencyBLL.cs" />
     <Compile Include="BLL\CLS_OperationTypeBLL.cs" />
+    <Compile Include="BLL\dsKurs.cs" />
     <Compile Include="BLL\ExchangeRatesBLL.cs" />
     <Compile Include="BLL\OfficialRatesBLL.cs" />
     <Compile Include="BLL\OperationsBLL.cs" />
@@ -66,18 +73,7 @@
     <Compile Include="Models\CLS_Currency.cs" />
     <Compile Include="Models\CLS_OperationType.cs" />
     <Compile Include="Models\ExchangeRate.cs" />
-    <Compile Include="Repository\CLS_CurrencyRepository.cs" />
-    <Compile Include="Repository\CLS_OperationTypeRepository.cs" />
-    <Compile Include="Repository\ExchangeRateRepository.cs" />
-    <Compile Include="Repository\ICLS_CurrencyRepository.cs" />
-    <Compile Include="Repository\ICLS_OperationTypeRepository.cs" />
-    <Compile Include="Repository\IExchangeRateRepository.cs" />
-    <Compile Include="Repository\IOfficialRateRepository.cs" />
-    <Compile Include="Repository\IOperationRepository.cs" />
-    <Compile Include="Repository\IUserRepository.cs" />
-    <Compile Include="Repository\OfficialRateRepository.cs" />
-    <Compile Include="Repository\OperationRepository.cs" />
-    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Views\Home.cs">
       <SubType>Form</SubType>
     </Compile>

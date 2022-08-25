@@ -1,21 +1,25 @@
-﻿using System;
+﻿using ExchangeOffice.Repository;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ExchangeOffice.BLL
 {
-    internal class OperationsBLL
+    internal class OperationsBLL : IRepository<Operation>
     {
         Entity myExchangeDb = new Entity();
+        private DbSet<Operation> table;
         public List<Operation> ShowData()
         {
-            List<Operation> allOP = myExchangeDb.Operations.ToList<Operation>();
-            return allOP;
+            table = myExchangeDb.Set<Operation>();
+            return GetAll();
         }
         public string insert(int OperationTypeId, int UsersId, DateTime OperationDatePicker, int Amount, int CurrencyFrom, int CurrencyTo)
         {
+            table = myExchangeDb.Set<Operation>();
             Operation op = new Operation();
             op.OperationTypeId = OperationTypeId;
             op.UserId = UsersId;
@@ -23,18 +27,11 @@ namespace ExchangeOffice.BLL
             op.Amount = Amount;
             op.CurrencyFrom = CurrencyFrom;
             op.CurrencyTo = CurrencyTo;
-            myExchangeDb.Operations.Add(op);
-            myExchangeDb.SaveChanges();
-            return "Your information has been saved";
-        }
-        public string delete(int id)
-        {
-            ExchangeRate er = myExchangeDb.ExchangeRates.Where(o => o.ExchangeRatesId == id).FirstOrDefault();
-            er.IsActive = 0;
-            return "Succefully deleted";
+            return Insert(op);
         }
         public string update(int id, int OperationTypeId, int UsersId, DateTime OperationDatePicker, int Amount, int CurrencyFrom, int CurrencyTo)
         {
+            table = myExchangeDb.Set<Operation>();
             Operation op = myExchangeDb.Operations.Where(o => o.OperationId == id).FirstOrDefault();
             op.OperationTypeId = OperationTypeId;
             op.UserId = UsersId;
@@ -42,7 +39,33 @@ namespace ExchangeOffice.BLL
             op.Amount = Amount;
             op.CurrencyFrom = CurrencyFrom;
             op.CurrencyTo = CurrencyTo;
-            myExchangeDb.Operations.Add(op);
+            return Update(op);
+        }
+
+        public List<Operation> GetAll()
+        {
+            table = myExchangeDb.Set<Operation>();
+            List<Operation> all = table.ToList<Operation>();
+            return all;
+        }
+
+        public Operation GetById(int id)
+        {
+            table = myExchangeDb.Set<Operation>();
+            Operation current = table.Find(id);
+            return current;
+        }
+
+        public string Insert(Operation t)
+        {
+            table = myExchangeDb.Set<Operation>();
+            table.Add(t);
+            myExchangeDb.SaveChanges();
+            return "Your information has been saved";
+        }
+
+        public string Update(Operation t)
+        {
             myExchangeDb.SaveChanges();
             return "Succefully updated";
         }

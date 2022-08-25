@@ -1,10 +1,12 @@
 ﻿using ExchangeOffice.BLL;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace ExchangeOffice
 {
     public partial class Operations : System.Windows.Forms.Form
     {
+        private static readonly string baseURL = "https://localhost:7229/api/";
         Entity myExchangeDb = new Entity();
         int temp;
         OperationsBLL op = new OperationsBLL();
@@ -81,10 +84,19 @@ namespace ExchangeOffice
 
         }
 
-        private void ShowData_Click(object sender, EventArgs e)
+        private async void ShowData_Click(object sender, EventArgs e)
         {
-            OperationsBLL op = new OperationsBLL();
-            dataGridView1.DataSource = op.ShowData();
+            //OperationsBLL op = new OperationsBLL();
+            //dataGridView1.DataSource = op.ShowData();
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage res = await client.GetAsync(baseURL + "Operations");
+
+                var data = await res.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<Operation>>(data);
+                dataGridView1.DataSource = list;
+
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

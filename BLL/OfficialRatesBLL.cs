@@ -1,23 +1,34 @@
-﻿using System;
+﻿using ExchangeOffice.Repository;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace ExchangeOffice.BLL
 {
-    internal class OfficialRatesBLL
+    internal class OfficialRatesBLL : IRepository<OfficialRate>
     {
         Entity myExchangeDb = new Entity();
+        private DbSet<OfficialRate> table;
         public List<OfficialRate> ShowData()
         {
             NbrmWebService.Kurs kurs = new NbrmWebService.Kurs();
-            var result = kurs.GetExchangeRateD(DateTime.Today, DateTime.Today);
+            var Rresult = kurs.GetExchangeRateD(DateTime.Today, DateTime.Today);
             XmlDocument doc = new XmlDocument();
-            doc.LoadXml(result);
-            Debug.Write(result);
+            XmlSerializer serializer = new XmlSerializer(typeof(dsKurs));
+            dsKurs result;
+            doc.LoadXml(Rresult);
+            Debug.Write(Rresult);
+            using (TextReader reader = new StringReader(Rresult))
+            {
+                result = (dsKurs)serializer.Deserialize(reader);
+            }
             foreach (XmlNode node in doc.SelectNodes("//KursZbir"))
             {
                 string name = node["Oznaka"].InnerText;
@@ -34,9 +45,7 @@ namespace ExchangeOffice.BLL
                     myExchangeDb.SaveChanges();
                 }
             }
-
-            List<OfficialRate> allOR = myExchangeDb.OfficialRates.ToList<OfficialRate>();
-            return allOR;
+            return GetAll();
         }
         public string insert(DateTime DatePicker, int Currency, double rate, bool? IsChecked)
         {
@@ -52,16 +61,12 @@ namespace ExchangeOffice.BLL
             {
                 or.IsActive = 0;
             }
-            myExchangeDb.OfficialRates.Add(or);
-            myExchangeDb.SaveChanges();
-
-            return "Your information has been saved";
+            return Insert(or);
         }
         public string delete(int id)
         {
             OfficialRate or = myExchangeDb.OfficialRates.Where(o => o.OfficialRatesId == id).FirstOrDefault();
-            or.IsActive = 0;
-            return "Succefully deleted";
+            return Update(or);
         }
         public string update(int id, DateTime DatePicker, int Currency, double rate, bool? IsChecked)
         {
@@ -78,6 +83,33 @@ namespace ExchangeOffice.BLL
             {
                 or.IsActive = 0;
             }
+            return Update(or);
+        }
+
+        public List<OfficialRate> GetAll()
+        {
+            table = myExchangeDb.Set<OfficialRate>();
+            List<OfficialRate> all = table.ToList<OfficialRate>();
+            return all;
+        }
+
+        public OfficialRate GetById(int id)
+        {
+            table = myExchangeDb.Set<OfficialRate>();
+            OfficialRate current = table.Find(id);
+            return current;
+        }
+
+        public string Insert(OfficialRate t)
+        {
+            table = myExchangeDb.Set<OfficialRate>();
+            table.Add(t);
+            myExchangeDb.SaveChanges();
+            return "Your information has been saved";
+        }
+
+        public string Update(OfficialRate t)
+        {
             myExchangeDb.SaveChanges();
             return "Succefully updated";
         }

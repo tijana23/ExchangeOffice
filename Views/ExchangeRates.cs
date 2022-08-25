@@ -1,10 +1,12 @@
 ﻿using ExchangeOffice.BLL;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace ExchangeOffice
 {
     public partial class ExchangeRates : System.Windows.Forms.Form
     {
+        private static readonly string baseURL = "https://localhost:7229/api/";
         Entity myExchangeDb = new Entity();
         int temp;
         ExchangeRatesBLL er = new ExchangeRatesBLL();
@@ -77,10 +80,19 @@ namespace ExchangeOffice
 
         }
 
-        private void ShowData_Click(object sender, EventArgs e)
+        private async void ShowData_Click(object sender, EventArgs e)
         {
-            ExchangeRatesBLL er = new ExchangeRatesBLL();
-            dataGridView1.DataSource = er.ShowData();
+            //ExchangeRatesBLL er = new ExchangeRatesBLL();
+            //dataGridView1.DataSource = er.ShowData();
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage res = await client.GetAsync(baseURL + "ExchangeRates");
+
+                var data = await res.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<ExchangeRate>>(data);
+                dataGridView1.DataSource = list;
+
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

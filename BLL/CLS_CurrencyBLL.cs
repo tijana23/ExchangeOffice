@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ExchangeOffice.Repository;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -8,9 +10,10 @@ using System.Xml;
 
 namespace ExchangeOffice.BLL
 {
-    internal class CLS_CurrencyBLL
+    internal class CLS_CurrencyBLL : IRepository<CLS_Currency>
     {
         Entity myExchangeDb = new Entity();
+        private DbSet<CLS_Currency> table;
         public List<CLS_Currency> ShowData()
         {
             NbrmWebService.Kurs kurs = new NbrmWebService.Kurs();
@@ -36,8 +39,7 @@ namespace ExchangeOffice.BLL
                 //    myExchangeDb.SaveChanges();
                 //}
             }
-            List<CLS_Currency> allCurrencies = myExchangeDb.CLS_Currency.ToList<CLS_Currency>();
-            return allCurrencies;
+            return GetAll();
         }
         public string insert(string Code, string Name, bool? IsChecked)
         {
@@ -52,15 +54,12 @@ namespace ExchangeOffice.BLL
             {
                 c.IsActive = 0;
             }
-            myExchangeDb.CLS_Currency.Add(c);
-            myExchangeDb.SaveChanges();
-            return "Your information has been saved";
+            return Insert(c);
         }
         public string delete(int id)
         {
             CLS_Currency c = myExchangeDb.CLS_Currency.Where(o => o.CurrencyId == id).FirstOrDefault();
-            c.IsActive = 0;
-            return "Succefully deleted";
+            return Update(c);
         }
         public string update(int id, string Code, string Name, bool? IsChecked)
         {
@@ -75,7 +74,33 @@ namespace ExchangeOffice.BLL
             {
                 c.IsActive = 0;
             }
-            myExchangeDb.CLS_Currency.Add(c);
+            return Update(c);
+        }
+
+        public List<CLS_Currency> GetAll()
+        {
+            table = myExchangeDb.Set<CLS_Currency>();
+            List<CLS_Currency> all = table.ToList<CLS_Currency>();
+            return all;
+        }
+
+        public CLS_Currency GetById(int id)
+        {
+            table = myExchangeDb.Set<CLS_Currency>();
+            CLS_Currency current = table.Find(id);
+            return current;
+        }
+
+        public string Insert(CLS_Currency t)
+        {
+            table = myExchangeDb.Set<CLS_Currency>();
+            table.Add(t);
+            myExchangeDb.SaveChanges();
+            return "Your information has been saved";
+        }
+
+        public string Update(CLS_Currency t)
+        {
             myExchangeDb.SaveChanges();
             return "Succefully updated";
         }

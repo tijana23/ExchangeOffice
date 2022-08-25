@@ -1,11 +1,14 @@
 ﻿using ExchangeOffice.BLL;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -15,15 +18,17 @@ namespace ExchangeOffice
 {
     public partial class Users : System.Windows.Forms.Form
     {
+        private static readonly string baseURL = "https://localhost:7229/api/";
         Entity myExchangeDb = new Entity();
         UsersBLL users = new UsersBLL();
+        UsersBLL u = new UsersBLL();
         public Users()
         {
             InitializeComponent();
         }
 
         private int temp;
-        private void UpdateButton_Click(object sender, EventArgs e)
+        private async void UpdateButton_Click(object sender, EventArgs e)
         {
             if (NameTB.Text == string.Empty)
             {
@@ -33,16 +38,38 @@ namespace ExchangeOffice
             {
                 MessageBox.Show("Please select user");
             }
-            else if (IsActiveCB.Checked)
+            //Debug.Write(NameTB.Text);
+            //Debug.Write(SurnameTB.Text);
+            //Debug.Write(temp);
+            //string result = users.update(temp, NameTB.Text, SurnameTB.Text, IsActiveCB.Checked);
+            //MessageBox.Show(result);
+            //dataGridView1.DataSource = users.ShowData();
+            User user = myExchangeDb.Users.Where(u => u.UsersId == temp).FirstOrDefault();
+            user.Name = NameTB.Text;
+            user.Surname = SurnameTB.Text;
+            if (IsActiveCB.Checked == true)
             {
-                MessageBox.Show("Please select user");
+                user.IsActive = 1;
+
             }
-            MessageBox.Show(users.update(temp, NameTB.Text, SurnameTB.Text, IsActiveCB.Checked));
-            dataGridView1.DataSource = users.ShowData();
+            else
+            {
+                user.IsActive = 0;
+            }
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage res = await client.PutAsJsonAsync(baseURL + "Users/" + temp ,user);
+                HttpResponseMessage result = await client.GetAsync(baseURL + "Users");
+
+                var data = await result.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<User>>(data);
+                dataGridView1.DataSource = list;
+
+            }
 
         }
 
-        private void InsertButton_Click(object sender, EventArgs e)
+        private async void InsertButton_Click(object sender, EventArgs e)
         {
             if (!Regex.Match(NameTB.Text, "[a-zA-Z ]").Success || !Regex.Match(SurnameTB.Text, "[a-zA-Z ]").Success || IsActiveCB.Text == string.Empty)
             {
@@ -52,19 +79,50 @@ namespace ExchangeOffice
             }
             else
             {
+                User user = new User();
+                user.Name = NameTB.Text;
+                user.Surname = SurnameTB.Text;
+                if (IsActiveCB.Checked == true)
+                {
+                    user.IsActive = 1;
+                }
+                else
+                {
+                    user.IsActive = 0;
+                }
+                //MessageBox.Show(users.insert(NameTB.Text, SurnameTB.Text, IsActiveCB.Checked));
+                //dataGridView1.DataSource = users.ShowData();
+                using (HttpClient client = new HttpClient())
+                {
+                    HttpResponseMessage res = await client.PostAsJsonAsync(baseURL + "Users",user);
+                    HttpResponseMessage result = await client.GetAsync(baseURL + "Users");
 
-                users.insert(NameTB.Text, SurnameTB.Text, IsActiveCB.Checked);
-                MessageBox.Show(users.insert(NameTB.Text, SurnameTB.Text, IsActiveCB.Checked));
-                dataGridView1.DataSource = users.ShowData();
+                    var data = await result.Content.ReadAsStringAsync();
+                    var list = JsonConvert.DeserializeObject<List<User>>(data);
+                    dataGridView1.DataSource = list;
+
+                }
             }
 
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
+        private async void DeleteButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(users.delete(temp));
-            IsActiveCB.Checked = false;
-            dataGridView1.DataSource = users.ShowData();
+            //MessageBox.Show(users.delete(temp));
+            //IsActiveCB.Checked = false;
+            //dataGridView1.DataSource = users.ShowData();
+            User user = myExchangeDb.Users.Where(u => u.UsersId == temp).FirstOrDefault();
+            user.IsActive = 0;
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage res = await client.PutAsJsonAsync(baseURL + "Users/" + temp, user);
+                HttpResponseMessage result = await client.GetAsync(baseURL + "Users");
+
+                var data = await result.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<User>>(data);
+                dataGridView1.DataSource = list;
+
+            }
 
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -84,14 +142,19 @@ namespace ExchangeOffice
             }
         }
 
-        private void ShowData_Click(object sender, EventArgs e)
+        private async void ShowData_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = users.ShowData();
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage res = await client.GetAsync(baseURL + "Users");
 
+                var data = await res.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<User>>(data);
+                dataGridView1.DataSource = list;
+
+            }
+            //dataGridView1.DataSource = u.GetAllUsers();
         }
-
-
-
     }
 
 }

@@ -11,11 +11,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using ExchangeOffice.BLL;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace ExchangeOffice
 {
     public partial class OfficialRates : System.Windows.Forms.Form
     {
+        private static readonly string baseURL = "https://localhost:7229/api/";
         Entity myExchangeDb = new Entity();
         int temp;
         int temp2, temp3;
@@ -83,10 +86,19 @@ namespace ExchangeOffice
 
         }
 
-        private void ShowData_Click(object sender, EventArgs e)
+        private async void ShowData_Click(object sender, EventArgs e)
         {
-            OfficialRatesBLL or = new OfficialRatesBLL();
-            dataGridView1.DataSource = or.ShowData();
+            //OfficialRatesBLL or = new OfficialRatesBLL();
+            //dataGridView1.DataSource = or.ShowData();
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage res = await client.GetAsync(baseURL + "OfficialRates");
+
+                var data = await res.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<OfficialRate>>(data);
+                dataGridView1.DataSource = list;
+
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

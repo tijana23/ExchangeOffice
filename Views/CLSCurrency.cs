@@ -1,10 +1,12 @@
 ﻿using ExchangeOffice.BLL;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace ExchangeOffice
 {
     public partial class CLSCurrency : System.Windows.Forms.Form
     {
+        private static readonly string baseURL = "https://localhost:7229/api/";
         Entity myExchangeDb = new Entity();
         int temp;
         CLS_CurrencyBLL curr = new CLS_CurrencyBLL();
@@ -80,10 +83,19 @@ namespace ExchangeOffice
 
         }
 
-        private void ShowData_Click(object sender, EventArgs e)
+        private async void ShowData_Click(object sender, EventArgs e)
         {
-            CLS_CurrencyBLL curr = new CLS_CurrencyBLL();
-            dataGridView1.DataSource = curr.ShowData();
+            //CLS_CurrencyBLL curr = new CLS_CurrencyBLL();
+            //dataGridView1.DataSource = curr.ShowData();
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage res = await client.GetAsync(baseURL + "ClsCurrencies");
+
+                var data = await res.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<CLS_Currency>>(data);
+                dataGridView1.DataSource = list;
+
+            }
 
         }
     }
