@@ -36,6 +36,8 @@
             this.operationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cLSCurrencyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cLSCurrencyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tDACalculationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loanCalculationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,8 +48,8 @@
             this.exchangeOfficeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(900, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -59,7 +61,9 @@
             this.exchangeRatesToolStripMenuItem,
             this.operationsToolStripMenuItem,
             this.cLSCurrencyToolStripMenuItem,
-            this.cLSCurrencyToolStripMenuItem1});
+            this.cLSCurrencyToolStripMenuItem1,
+            this.tDACalculationToolStripMenuItem,
+            this.loanCalculationsToolStripMenuItem});
             this.exchangeOfficeToolStripMenuItem.Name = "exchangeOfficeToolStripMenuItem";
             this.exchangeOfficeToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
             this.exchangeOfficeToolStripMenuItem.Text = "Menu";
@@ -106,14 +110,27 @@
             this.cLSCurrencyToolStripMenuItem1.Text = "CLS_OperationType";
             this.cLSCurrencyToolStripMenuItem1.Click += new System.EventHandler(this.cLSCurrencyToolStripMenuItem1_Click);
             // 
+            // tDACalculationToolStripMenuItem
+            // 
+            this.tDACalculationToolStripMenuItem.Name = "tDACalculationToolStripMenuItem";
+            this.tDACalculationToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.tDACalculationToolStripMenuItem.Text = "TDACalculation";
+            this.tDACalculationToolStripMenuItem.Click += new System.EventHandler(this.tDACalculationToolStripMenuItem_Click);
+            // 
+            // loanCalculationsToolStripMenuItem
+            // 
+            this.loanCalculationsToolStripMenuItem.Name = "loanCalculationsToolStripMenuItem";
+            this.loanCalculationsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.loanCalculationsToolStripMenuItem.Text = "LoanCalculations";
+            this.loanCalculationsToolStripMenuItem.Click += new System.EventHandler(this.loanCalculationsToolStripMenuItem_Click);
+            // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 562);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Home";
             this.Text = "Exchange Office";
             this.menuStrip1.ResumeLayout(false);
@@ -133,6 +150,8 @@
         private System.Windows.Forms.ToolStripMenuItem operationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cLSCurrencyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cLSCurrencyToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tDACalculationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loanCalculationsToolStripMenuItem;
     }
 }
 

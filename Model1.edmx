@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ExchangeOfficeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="DeleteFromUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertIntoUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Surname" Type="varchar" Mode="In" />
+          <Parameter Name="IsActive" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Loan_payment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Amount" Type="float" Mode="In" />
+          <Parameter Name="InterestRate" Type="float" Mode="In" />
+          <Parameter Name="NumberOfInstallments" Type="float" Mode="In" />
+        </Function>
+        <Function Name="LoanP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Amount" Type="float" Mode="In" />
+          <Parameter Name="InterestRate" Type="float" Mode="In" />
+          <Parameter Name="NumberOfInstallments" Type="int" Mode="In" />
+          <Parameter Name="Day" Type="int" Mode="In" />
+          <Parameter Name="Month" Type="varchar" Mode="In" />
+          <Parameter Name="Year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="number_of_days_in_month" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="monthname" Type="varchar" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PopulateOperations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TDA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Amount" Type="float" Mode="In" />
+          <Parameter Name="InterestRate" Type="float" Mode="In" />
+          <Parameter Name="PeriodInYears" Type="int" Mode="In" />
+          <Parameter Name="Day" Type="int" Mode="In" />
+          <Parameter Name="Month" Type="varchar" Mode="In" />
+          <Parameter Name="Year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TDA_calc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Amount" Type="float" Mode="In" />
+          <Parameter Name="InterestRate" Type="float" Mode="In" />
+          <Parameter Name="PeriodInYears" Type="int" Mode="In" />
+          <Parameter Name="Day" Type="int" Mode="In" />
+          <Parameter Name="Month" Type="varchar" Mode="In" />
+          <Parameter Name="Year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TDA_calculation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Amount" Type="int" Mode="In" />
+          <Parameter Name="Interest" Type="int" Mode="In" />
+          <Parameter Name="Period" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ExchangeOfficeModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExchangeOfficeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ExchangeOfficeEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="DeleteFromUsers">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertIntoUsers">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Surname" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Loan_payment">
+            <Parameter Name="Amount" Mode="In" Type="Double" />
+            <Parameter Name="InterestRate" Mode="In" Type="Double" />
+            <Parameter Name="NumberOfInstallments" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="LoanP" ReturnType="Collection(ExchangeOfficeModel.LoanP_Result)">
+            <Parameter Name="Amount" Mode="In" Type="Double" />
+            <Parameter Name="InterestRate" Mode="In" Type="Double" />
+            <Parameter Name="NumberOfInstallments" Mode="In" Type="Int32" />
+            <Parameter Name="Day" Mode="In" Type="Int32" />
+            <Parameter Name="Month" Mode="In" Type="String" />
+            <Parameter Name="Year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PopulateOperations">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TDA" ReturnType="Collection(ExchangeOfficeModel.TDA_Result)">
+            <Parameter Name="Amount" Mode="In" Type="Double" />
+            <Parameter Name="InterestRate" Mode="In" Type="Double" />
+            <Parameter Name="PeriodInYears" Mode="In" Type="Int32" />
+            <Parameter Name="Day" Mode="In" Type="Int32" />
+            <Parameter Name="Month" Mode="In" Type="String" />
+            <Parameter Name="Year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TDA_calc" ReturnType="Collection(ExchangeOfficeModel.TDA_calc_Result)">
+            <Parameter Name="Amount" Mode="In" Type="Double" />
+            <Parameter Name="InterestRate" Mode="In" Type="Double" />
+            <Parameter Name="PeriodInYears" Mode="In" Type="Int32" />
+            <Parameter Name="Day" Mode="In" Type="Int32" />
+            <Parameter Name="Month" Mode="In" Type="String" />
+            <Parameter Name="Year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TDA_calculation">
+            <Parameter Name="Amount" Mode="In" Type="Int32" />
+            <Parameter Name="Interest" Mode="In" Type="Int32" />
+            <Parameter Name="Period" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="LoanP_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Double" Name="MonthlyPayment" Nullable="true" />
+          <Property Type="Double" Name="Capital" Nullable="true" />
+          <Property Type="Double" Name="Interest" Nullable="true" />
+          <Property Type="Double" Name="TotalInterest" Nullable="true" />
+          <Property Type="Double" Name="Amount" Nullable="true" />
+          <Property Type="String" Name="MonthDate" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="YearDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TDA_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="MonthDate" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="YearDate" Nullable="true" />
+          <Property Type="Double" Name="Amount" Nullable="true" />
+          <Property Type="Double" Name="Commission" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TDA_calc_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="MonthDate" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="YearDate" Nullable="true" />
+          <Property Type="Double" Name="Amount" Nullable="true" />
+          <Property Type="Double" Name="Commission" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ExchangeOfficeModelStoreContainer" CdmEntityContainer="ExchangeOfficeEntities" >
+          <FunctionImportMapping FunctionImportName="DeleteFromUsers" FunctionName="ExchangeOfficeModel.Store.DeleteFromUsers" />
+          <FunctionImportMapping FunctionImportName="InsertIntoUsers" FunctionName="ExchangeOfficeModel.Store.InsertIntoUsers" />
+          <FunctionImportMapping FunctionImportName="Loan_payment" FunctionName="ExchangeOfficeModel.Store.Loan_payment" />
+          <FunctionImportMapping FunctionImportName="LoanP" FunctionName="ExchangeOfficeModel.Store.LoanP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExchangeOfficeModel.LoanP_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MonthlyPayment" ColumnName="MonthlyPayment" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="Interest" ColumnName="Interest" />
+                <ScalarProperty Name="TotalInterest" ColumnName="TotalInterest" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MonthDate" ColumnName="MonthDate" />
+                <ScalarProperty Name="YearDate" ColumnName="YearDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PopulateOperations" FunctionName="ExchangeOfficeModel.Store.PopulateOperations" />
+          <FunctionImportMapping FunctionImportName="TDA" FunctionName="ExchangeOfficeModel.Store.TDA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExchangeOfficeModel.TDA_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MonthDate" ColumnName="MonthDate" />
+                <ScalarProperty Name="YearDate" ColumnName="YearDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Commission" ColumnName="Commission" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TDA_calc" FunctionName="ExchangeOfficeModel.Store.TDA_calc">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ExchangeOfficeModel.TDA_calc_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MonthDate" ColumnName="MonthDate" />
+                <ScalarProperty Name="YearDate" ColumnName="YearDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Commission" ColumnName="Commission" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TDA_calculation" FunctionName="ExchangeOfficeModel.Store.TDA_calculation" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExchangeOffice.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -152,6 +153,54 @@ namespace ExchangeOffice
                 to.Show();
                 to.MdiParent = this;
                
+            }
+
+        }
+
+        private void tDACalculationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "TDACalculation")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                TDACalculation to = new TDACalculation();
+                to.Show();
+                to.MdiParent = this;
+
+            }
+
+        }
+
+        private void loanCalculationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "LoanCalculations")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                LoanCalculations to = new LoanCalculations();
+                to.Show();
+                to.MdiParent = this;
+
             }
 
         }

@@ -40,11 +40,11 @@
             this.Update = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ShowData = new System.Windows.Forms.Button();
             this.OperationTypeIdCB = new System.Windows.Forms.ComboBox();
             this.UserIdCB = new System.Windows.Forms.ComboBox();
             this.CurrencyFromCB = new System.Windows.Forms.ComboBox();
             this.CurrencyToCB = new System.Windows.Forms.ComboBox();
+            this.ShowData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -204,19 +204,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1306, 726);
             this.tableLayoutPanel1.TabIndex = 16;
             // 
-            // ShowData
-            // 
-            this.ShowData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ShowData.Location = new System.Drawing.Point(264, 240);
-            this.ShowData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ShowData.Name = "ShowData";
-            this.ShowData.Size = new System.Drawing.Size(142, 30);
-            this.ShowData.TabIndex = 16;
-            this.ShowData.Text = "Show Data";
-            this.ShowData.UseVisualStyleBackColor = true;
-            this.ShowData.Click += new System.EventHandler(this.ShowData_Click);
-            // 
             // OperationTypeIdCB
             // 
             this.OperationTypeIdCB.FormattingEnabled = true;
@@ -252,6 +239,19 @@
             this.CurrencyToCB.Name = "CurrencyToCB";
             this.CurrencyToCB.Size = new System.Drawing.Size(108, 24);
             this.CurrencyToCB.TabIndex = 20;
+            // 
+            // ShowData
+            // 
+            this.ShowData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ShowData.Location = new System.Drawing.Point(264, 240);
+            this.ShowData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ShowData.Name = "ShowData";
+            this.ShowData.Size = new System.Drawing.Size(142, 30);
+            this.ShowData.TabIndex = 16;
+            this.ShowData.Text = "Show Data";
+            this.ShowData.UseVisualStyleBackColor = true;
+            this.ShowData.Click += new System.EventHandler(this.ShowData_Click);
             // 
             // Operations
             // 
