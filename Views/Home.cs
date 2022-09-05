@@ -3,9 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,10 +17,13 @@ namespace ExchangeOffice
 {
     public partial class Home : System.Windows.Forms.Form
     {
+        private static readonly string baseURL = "https://localhost:44355/";
         public Home()
         {
             InitializeComponent();
             IsMdiContainer = true;
+            exchangeOfficeToolStripMenuItem.Visible = false;
+            tableLayoutPanel1.Visible = true;
         }
 
         private void usersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -203,6 +210,45 @@ namespace ExchangeOffice
 
             }
 
+        }
+
+        
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            if (!Regex.Match(username.Text, "[a-zA-Z ]").Success || !Regex.Match(password.Text, "[a-zA-Z ]").Success)
+            {
+                MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                username.Text = "";
+                password.Text = "";
+            }
+            else
+            {
+                Account user = new Account();
+                user.UserName = username.Text;
+                user.Password = password.Text;
+                //MessageBox.Show(users.insert(NameTB.Text, SurnameTB.Text, IsActiveCB.Checked));
+                //dataGridView1.DataSource = users.ShowData();
+                using (HttpClient client = new HttpClient())
+                {
+                    HttpResponseMessage res = await client.PostAsJsonAsync(baseURL + "api/Token/Authenticate", user);
+                    var response = await res.Content.ReadAsStringAsync();
+                    Debug.Write(response);
+                    var statusCode = res.StatusCode;
+                    if (statusCode == HttpStatusCode.OK)
+                    {
+                        Token.setToken(response);
+                        exchangeOfficeToolStripMenuItem.Visible = true;
+                        tableLayoutPanel1.Visible = false;
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("User Unauthorized.Please Try Again!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
         }
     }
 }

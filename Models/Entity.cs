@@ -17,6 +17,7 @@ namespace ExchangeOffice
         public virtual DbSet<OfficialRate> OfficialRates { get; set; }
         public virtual DbSet<Operation> Operations { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -73,6 +74,14 @@ namespace ExchangeOffice
                 .HasMany(e => e.Operations)
                 .WithOptional(e => e.User)
                 .HasForeignKey(e => e.UserId);
+
+            modelBuilder.Entity<Account>()
+                .Property(e => e.UserName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Account>()
+                .Property(e => e.Password)
+                .IsUnicode(false);
         }
     }
 }

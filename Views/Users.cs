@@ -58,6 +58,7 @@ namespace ExchangeOffice
             }
             using (HttpClient client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token.getToken());
                 HttpResponseMessage res = await client.PutAsJsonAsync(baseURL + "Users/" + temp ,user);
                 HttpResponseMessage result = await client.GetAsync(baseURL + "Users");
 
@@ -94,6 +95,7 @@ namespace ExchangeOffice
                 //dataGridView1.DataSource = users.ShowData();
                 using (HttpClient client = new HttpClient())
                 {
+                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token.getToken());
                     HttpResponseMessage res = await client.PostAsJsonAsync(baseURL + "Users",user);
                     HttpResponseMessage result = await client.GetAsync(baseURL + "Users");
 
@@ -115,6 +117,7 @@ namespace ExchangeOffice
             user.IsActive = 0;
             using (HttpClient client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token.getToken());
                 HttpResponseMessage res = await client.PutAsJsonAsync(baseURL + "Users/" + temp, user);
                 HttpResponseMessage result = await client.GetAsync(baseURL + "Users");
 
@@ -144,8 +147,10 @@ namespace ExchangeOffice
 
         private async void ShowData_Click(object sender, EventArgs e)
         {
+
             using (HttpClient client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token.getToken());
                 HttpResponseMessage res = await client.GetAsync(baseURL + "Users");
 
                 var data = await res.Content.ReadAsStringAsync();
