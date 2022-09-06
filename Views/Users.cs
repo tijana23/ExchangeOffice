@@ -56,6 +56,7 @@ namespace ExchangeOffice
             {
                 user.IsActive = 0;
             }
+            MessageBox.Show("Succefully updated");
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token.getToken());
@@ -91,6 +92,7 @@ namespace ExchangeOffice
                 {
                     user.IsActive = 0;
                 }
+                MessageBox.Show("Your information has been saved");
                 //MessageBox.Show(users.insert(NameTB.Text, SurnameTB.Text, IsActiveCB.Checked));
                 //dataGridView1.DataSource = users.ShowData();
                 using (HttpClient client = new HttpClient())
@@ -115,6 +117,8 @@ namespace ExchangeOffice
             //dataGridView1.DataSource = users.ShowData();
             User user = myExchangeDb.Users.Where(u => u.UsersId == temp).FirstOrDefault();
             user.IsActive = 0;
+            //MessageBox.Show(users.delete(temp));
+            MessageBox.Show("Succefully updated");
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token.getToken());
@@ -148,6 +152,7 @@ namespace ExchangeOffice
         private async void ShowData_Click(object sender, EventArgs e)
         {
 
+
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token.getToken());
@@ -159,6 +164,13 @@ namespace ExchangeOffice
 
             }
             //dataGridView1.DataSource = u.GetAllUsers();
+        }
+
+        private void Users_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'exchangeOfficeDataSet.Users' table. You can move, or remove it, as needed.
+            this.usersTableAdapter.Fill(this.exchangeOfficeDataSet.Users);
+
         }
     }
 

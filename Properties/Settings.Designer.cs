@@ -32,5 +32,16 @@ namespace ExchangeOffice.Properties {
                 return ((string)(this["ExchangeOffice_NbrmWebService_Kurs"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-A2PCMDA;Initial Catalog=ExchangeOffice;Integrated Security=Tr" +
+            "ue")]
+        public string ExchangeOfficeConnectionString {
+            get {
+                return ((string)(this["ExchangeOfficeConnectionString"]));
+            }
+        }
     }
 }

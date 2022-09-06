@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.IsActiveCB = new System.Windows.Forms.CheckBox();
@@ -39,8 +40,17 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ShowData = new System.Windows.Forms.Button();
+            this.exchangeOfficeDataSet2 = new ExchangeOffice.ExchangeOfficeDataSet2();
+            this.cLSOperationTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cLS_OperationTypeTableAdapter = new ExchangeOffice.ExchangeOfficeDataSet2TableAdapters.CLS_OperationTypeTableAdapter();
+            this.operationTypeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exchangeOfficeDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cLSOperationTypeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -131,8 +141,15 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.operationTypeIdDataGridViewTextBoxColumn,
+            this.codeDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.isActiveDataGridViewTextBoxColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
+            this.dataGridView1.DataSource = this.cLSOperationTypeBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 172);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -186,6 +203,53 @@
             this.ShowData.UseVisualStyleBackColor = true;
             this.ShowData.Click += new System.EventHandler(this.ShowData_Click);
             // 
+            // exchangeOfficeDataSet2
+            // 
+            this.exchangeOfficeDataSet2.DataSetName = "ExchangeOfficeDataSet2";
+            this.exchangeOfficeDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cLSOperationTypeBindingSource
+            // 
+            this.cLSOperationTypeBindingSource.DataMember = "CLS_OperationType";
+            this.cLSOperationTypeBindingSource.DataSource = this.exchangeOfficeDataSet2;
+            // 
+            // cLS_OperationTypeTableAdapter
+            // 
+            this.cLS_OperationTypeTableAdapter.ClearBeforeFill = true;
+            // 
+            // operationTypeIdDataGridViewTextBoxColumn
+            // 
+            this.operationTypeIdDataGridViewTextBoxColumn.DataPropertyName = "OperationTypeId";
+            this.operationTypeIdDataGridViewTextBoxColumn.HeaderText = "OperationTypeId";
+            this.operationTypeIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.operationTypeIdDataGridViewTextBoxColumn.Name = "operationTypeIdDataGridViewTextBoxColumn";
+            this.operationTypeIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.operationTypeIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // isActiveDataGridViewTextBoxColumn
+            // 
+            this.isActiveDataGridViewTextBoxColumn.DataPropertyName = "IsActive";
+            this.isActiveDataGridViewTextBoxColumn.HeaderText = "IsActive";
+            this.isActiveDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.isActiveDataGridViewTextBoxColumn.Name = "isActiveDataGridViewTextBoxColumn";
+            this.isActiveDataGridViewTextBoxColumn.Width = 125;
+            // 
             // CLSOperationType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -195,9 +259,12 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CLSOperationType";
             this.Text = "CLS_OperationType";
+            this.Load += new System.EventHandler(this.CLSOperationType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exchangeOfficeDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cLSOperationTypeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -215,5 +282,12 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button ShowData;
+        private ExchangeOfficeDataSet2 exchangeOfficeDataSet2;
+        private System.Windows.Forms.BindingSource cLSOperationTypeBindingSource;
+        private ExchangeOfficeDataSet2TableAdapters.CLS_OperationTypeTableAdapter cLS_OperationTypeTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operationTypeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isActiveDataGridViewTextBoxColumn;
     }
 }

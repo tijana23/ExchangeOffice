@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.IsActiveCB = new System.Windows.Forms.CheckBox();
@@ -39,8 +40,17 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ShowData = new System.Windows.Forms.Button();
+            this.exchangeOfficeDataSet1 = new ExchangeOffice.ExchangeOfficeDataSet1();
+            this.cLSCurrencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cLS_CurrencyTableAdapter = new ExchangeOffice.ExchangeOfficeDataSet1TableAdapters.CLS_CurrencyTableAdapter();
+            this.currencyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exchangeOfficeDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cLSCurrencyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -131,8 +141,15 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.currencyIdDataGridViewTextBoxColumn,
+            this.codeDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.isActiveDataGridViewTextBoxColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
+            this.dataGridView1.DataSource = this.cLSCurrencyBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 172);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -186,6 +203,53 @@
             this.ShowData.UseVisualStyleBackColor = true;
             this.ShowData.Click += new System.EventHandler(this.ShowData_Click);
             // 
+            // exchangeOfficeDataSet1
+            // 
+            this.exchangeOfficeDataSet1.DataSetName = "ExchangeOfficeDataSet1";
+            this.exchangeOfficeDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cLSCurrencyBindingSource
+            // 
+            this.cLSCurrencyBindingSource.DataMember = "CLS_Currency";
+            this.cLSCurrencyBindingSource.DataSource = this.exchangeOfficeDataSet1;
+            // 
+            // cLS_CurrencyTableAdapter
+            // 
+            this.cLS_CurrencyTableAdapter.ClearBeforeFill = true;
+            // 
+            // currencyIdDataGridViewTextBoxColumn
+            // 
+            this.currencyIdDataGridViewTextBoxColumn.DataPropertyName = "CurrencyId";
+            this.currencyIdDataGridViewTextBoxColumn.HeaderText = "CurrencyId";
+            this.currencyIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.currencyIdDataGridViewTextBoxColumn.Name = "currencyIdDataGridViewTextBoxColumn";
+            this.currencyIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.currencyIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // isActiveDataGridViewTextBoxColumn
+            // 
+            this.isActiveDataGridViewTextBoxColumn.DataPropertyName = "IsActive";
+            this.isActiveDataGridViewTextBoxColumn.HeaderText = "IsActive";
+            this.isActiveDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.isActiveDataGridViewTextBoxColumn.Name = "isActiveDataGridViewTextBoxColumn";
+            this.isActiveDataGridViewTextBoxColumn.Width = 125;
+            // 
             // CLSCurrency
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -195,9 +259,12 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CLSCurrency";
             this.Text = "CLS_Currency";
+            this.Load += new System.EventHandler(this.CLSCurrency_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exchangeOfficeDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cLSCurrencyBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -215,5 +282,12 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button ShowData;
+        private ExchangeOfficeDataSet1 exchangeOfficeDataSet1;
+        private System.Windows.Forms.BindingSource cLSCurrencyBindingSource;
+        private ExchangeOfficeDataSet1TableAdapters.CLS_CurrencyTableAdapter cLS_CurrencyTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currencyIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isActiveDataGridViewTextBoxColumn;
     }
 }

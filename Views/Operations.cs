@@ -16,7 +16,7 @@ namespace ExchangeOffice
 {
     public partial class Operations : System.Windows.Forms.Form
     {
-        private static readonly string baseURL = "https://localhost:7229/api/";
+        private static readonly string baseURL = "https://localhost:44355/api/";
         Entity myExchangeDb = new Entity();
         int temp;
         OperationsBLL op = new OperationsBLL();
@@ -144,6 +144,15 @@ namespace ExchangeOffice
                 }
 
             }
+        }
+
+        private void Operations_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'exchangeOfficeDataSet6.Users' table. You can move, or remove it, as needed.
+            this.usersTableAdapter.Fill(this.exchangeOfficeDataSet6.Users);
+            // TODO: This line of code loads data into the 'exchangeOfficeDataSet5.Operations' table. You can move, or remove it, as needed.
+            this.operationsTableAdapter.Fill(this.exchangeOfficeDataSet5.Operations);
+
         }
     }
 }

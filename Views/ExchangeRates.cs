@@ -16,7 +16,7 @@ namespace ExchangeOffice
 {
     public partial class ExchangeRates : System.Windows.Forms.Form
     {
-        private static readonly string baseURL = "https://localhost:7229/api/";
+        private static readonly string baseURL = "https://localhost:44355/api/";
         Entity myExchangeDb = new Entity();
         int temp;
         ExchangeRatesBLL er = new ExchangeRatesBLL();
@@ -127,6 +127,13 @@ namespace ExchangeOffice
             {
                 IsActiveCB.Checked = false;
             }
+
+        }
+
+        private void ExchangeRates_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'exchangeOfficeDataSet3.ExchangeRates' table. You can move, or remove it, as needed.
+            this.exchangeRatesTableAdapter.Fill(this.exchangeOfficeDataSet3.ExchangeRates);
 
         }
     }

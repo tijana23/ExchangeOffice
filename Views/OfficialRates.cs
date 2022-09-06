@@ -18,7 +18,7 @@ namespace ExchangeOffice
 {
     public partial class OfficialRates : System.Windows.Forms.Form
     {
-        private static readonly string baseURL = "https://localhost:7229/api/";
+        private static readonly string baseURL = "https://localhost:44355/api/";
         Entity myExchangeDb = new Entity();
         int temp;
         int temp2, temp3;
@@ -99,6 +99,13 @@ namespace ExchangeOffice
                 dataGridView1.DataSource = list;
 
             }
+        }
+
+        private void OfficialRates_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'exchangeOfficeDataSet4.OfficialRates' table. You can move, or remove it, as needed.
+            this.officialRatesTableAdapter.Fill(this.exchangeOfficeDataSet4.OfficialRates);
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

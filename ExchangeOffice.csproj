@@ -66,6 +66,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExchangeOfficeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExchangeOfficeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ExchangeOfficeDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExchangeOfficeDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ExchangeOfficeDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExchangeOfficeDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ExchangeOfficeDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExchangeOfficeDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ExchangeOfficeDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExchangeOfficeDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ExchangeOfficeDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExchangeOfficeDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ExchangeOfficeDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExchangeOfficeDataSet6.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Models\Account.cs" />
     <Compile Include="BLL\CLS_CurrencyBLL.cs" />
     <Compile Include="BLL\CLS_OperationTypeBLL.cs" />
@@ -217,6 +252,83 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ExchangeOfficeDataSet.xsc">
+      <DependentUpon>ExchangeOfficeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExchangeOfficeDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ExchangeOfficeDataSet.xss">
+      <DependentUpon>ExchangeOfficeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet1.xsc">
+      <DependentUpon>ExchangeOfficeDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExchangeOfficeDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ExchangeOfficeDataSet1.xss">
+      <DependentUpon>ExchangeOfficeDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet2.xsc">
+      <DependentUpon>ExchangeOfficeDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExchangeOfficeDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ExchangeOfficeDataSet2.xss">
+      <DependentUpon>ExchangeOfficeDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet3.xsc">
+      <DependentUpon>ExchangeOfficeDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExchangeOfficeDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ExchangeOfficeDataSet3.xss">
+      <DependentUpon>ExchangeOfficeDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet4.xsc">
+      <DependentUpon>ExchangeOfficeDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExchangeOfficeDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ExchangeOfficeDataSet4.xss">
+      <DependentUpon>ExchangeOfficeDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet5.xsc">
+      <DependentUpon>ExchangeOfficeDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExchangeOfficeDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ExchangeOfficeDataSet5.xss">
+      <DependentUpon>ExchangeOfficeDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet6.xsc">
+      <DependentUpon>ExchangeOfficeDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="ExchangeOfficeDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExchangeOfficeDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ExchangeOfficeDataSet6.xss">
+      <DependentUpon>ExchangeOfficeDataSet6.xsd</DependentUpon>
+    </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>

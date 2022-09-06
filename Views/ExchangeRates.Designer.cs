@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,8 +44,19 @@
             this.ShowData = new System.Windows.Forms.Button();
             this.CurrencyToCB = new System.Windows.Forms.ComboBox();
             this.CurrencyFromCB = new System.Windows.Forms.ComboBox();
+            this.exchangeOfficeDataSet3 = new ExchangeOffice.ExchangeOfficeDataSet3();
+            this.exchangeRatesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.exchangeRatesTableAdapter = new ExchangeOffice.ExchangeOfficeDataSet3TableAdapters.ExchangeRatesTableAdapter();
+            this.exchangeRatesIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.validityDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencyFromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencyToDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exchangeOfficeDataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exchangeRatesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -155,8 +167,17 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.exchangeRatesIdDataGridViewTextBoxColumn,
+            this.validityDateDataGridViewTextBoxColumn,
+            this.currencyFromDataGridViewTextBoxColumn,
+            this.currencyToDataGridViewTextBoxColumn,
+            this.rateDataGridViewTextBoxColumn,
+            this.isActiveDataGridViewTextBoxColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
+            this.dataGridView1.DataSource = this.exchangeRatesBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 240);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -234,6 +255,69 @@
             this.CurrencyFromCB.Size = new System.Drawing.Size(108, 24);
             this.CurrencyFromCB.TabIndex = 14;
             // 
+            // exchangeOfficeDataSet3
+            // 
+            this.exchangeOfficeDataSet3.DataSetName = "ExchangeOfficeDataSet3";
+            this.exchangeOfficeDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // exchangeRatesBindingSource
+            // 
+            this.exchangeRatesBindingSource.DataMember = "ExchangeRates";
+            this.exchangeRatesBindingSource.DataSource = this.exchangeOfficeDataSet3;
+            // 
+            // exchangeRatesTableAdapter
+            // 
+            this.exchangeRatesTableAdapter.ClearBeforeFill = true;
+            // 
+            // exchangeRatesIdDataGridViewTextBoxColumn
+            // 
+            this.exchangeRatesIdDataGridViewTextBoxColumn.DataPropertyName = "ExchangeRatesId";
+            this.exchangeRatesIdDataGridViewTextBoxColumn.HeaderText = "ExchangeRatesId";
+            this.exchangeRatesIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.exchangeRatesIdDataGridViewTextBoxColumn.Name = "exchangeRatesIdDataGridViewTextBoxColumn";
+            this.exchangeRatesIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.exchangeRatesIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // validityDateDataGridViewTextBoxColumn
+            // 
+            this.validityDateDataGridViewTextBoxColumn.DataPropertyName = "ValidityDate";
+            this.validityDateDataGridViewTextBoxColumn.HeaderText = "ValidityDate";
+            this.validityDateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.validityDateDataGridViewTextBoxColumn.Name = "validityDateDataGridViewTextBoxColumn";
+            this.validityDateDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // currencyFromDataGridViewTextBoxColumn
+            // 
+            this.currencyFromDataGridViewTextBoxColumn.DataPropertyName = "CurrencyFrom";
+            this.currencyFromDataGridViewTextBoxColumn.HeaderText = "CurrencyFrom";
+            this.currencyFromDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.currencyFromDataGridViewTextBoxColumn.Name = "currencyFromDataGridViewTextBoxColumn";
+            this.currencyFromDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // currencyToDataGridViewTextBoxColumn
+            // 
+            this.currencyToDataGridViewTextBoxColumn.DataPropertyName = "CurrencyTo";
+            this.currencyToDataGridViewTextBoxColumn.HeaderText = "CurrencyTo";
+            this.currencyToDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.currencyToDataGridViewTextBoxColumn.Name = "currencyToDataGridViewTextBoxColumn";
+            this.currencyToDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // rateDataGridViewTextBoxColumn
+            // 
+            this.rateDataGridViewTextBoxColumn.DataPropertyName = "Rate";
+            this.rateDataGridViewTextBoxColumn.HeaderText = "Rate";
+            this.rateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
+            this.rateDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // isActiveDataGridViewTextBoxColumn
+            // 
+            this.isActiveDataGridViewTextBoxColumn.DataPropertyName = "IsActive";
+            this.isActiveDataGridViewTextBoxColumn.HeaderText = "IsActive";
+            this.isActiveDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.isActiveDataGridViewTextBoxColumn.Name = "isActiveDataGridViewTextBoxColumn";
+            this.isActiveDataGridViewTextBoxColumn.Width = 125;
+            // 
             // ExchangeRates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -243,9 +327,12 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ExchangeRates";
             this.Text = "Exchange Rates";
+            this.Load += new System.EventHandler(this.ExchangeRates_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exchangeOfficeDataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exchangeRatesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -267,5 +354,14 @@
         private System.Windows.Forms.Button ShowData;
         private System.Windows.Forms.ComboBox CurrencyToCB;
         private System.Windows.Forms.ComboBox CurrencyFromCB;
+        private ExchangeOfficeDataSet3 exchangeOfficeDataSet3;
+        private System.Windows.Forms.BindingSource exchangeRatesBindingSource;
+        private ExchangeOfficeDataSet3TableAdapters.ExchangeRatesTableAdapter exchangeRatesTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn exchangeRatesIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn validityDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currencyFromDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currencyToDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isActiveDataGridViewTextBoxColumn;
     }
 }

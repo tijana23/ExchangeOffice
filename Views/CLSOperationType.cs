@@ -16,7 +16,7 @@ namespace ExchangeOffice
 {
     public partial class CLSOperationType : System.Windows.Forms.Form
     {
-        private static readonly string baseURL = "https://localhost:7229/api/";
+        private static readonly string baseURL = "https://localhost:44355/api/";
         Entity myExchangeDb = new Entity();
         int temp;
         CLS_OperationTypeBLL cop = new CLS_OperationTypeBLL();
@@ -94,6 +94,13 @@ namespace ExchangeOffice
             {
                 IsActiveCB.Checked = false;
             }
+
+        }
+
+        private void CLSOperationType_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'exchangeOfficeDataSet2.CLS_OperationType' table. You can move, or remove it, as needed.
+            this.cLS_OperationTypeTableAdapter.Fill(this.exchangeOfficeDataSet2.CLS_OperationType);
 
         }
     }

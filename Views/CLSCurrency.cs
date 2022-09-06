@@ -16,7 +16,7 @@ namespace ExchangeOffice
 {
     public partial class CLSCurrency : System.Windows.Forms.Form
     {
-        private static readonly string baseURL = "https://localhost:7229/api/";
+        private static readonly string baseURL = "https://localhost:44355/api/";
         Entity myExchangeDb = new Entity();
         int temp;
         CLS_CurrencyBLL curr = new CLS_CurrencyBLL();
@@ -96,6 +96,13 @@ namespace ExchangeOffice
                 dataGridView1.DataSource = list;
 
             }
+
+        }
+
+        private void CLSCurrency_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'exchangeOfficeDataSet1.CLS_Currency' table. You can move, or remove it, as needed.
+            this.cLS_CurrencyTableAdapter.Fill(this.exchangeOfficeDataSet1.CLS_Currency);
 
         }
     }

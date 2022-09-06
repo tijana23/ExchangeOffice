@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,8 +46,25 @@
             this.CurrencyFromCB = new System.Windows.Forms.ComboBox();
             this.CurrencyToCB = new System.Windows.Forms.ComboBox();
             this.ShowData = new System.Windows.Forms.Button();
+            this.exchangeOfficeDataSet5 = new ExchangeOffice.ExchangeOfficeDataSet5();
+            this.operationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.operationsTableAdapter = new ExchangeOffice.ExchangeOfficeDataSet5TableAdapters.OperationsTableAdapter();
+            this.exchangeOfficeDataSet6 = new ExchangeOffice.ExchangeOfficeDataSet6();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersTableAdapter = new ExchangeOffice.ExchangeOfficeDataSet6TableAdapters.UsersTableAdapter();
+            this.operationIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operationTypeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencyFromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currencyToDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exchangeOfficeDataSet5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.operationsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exchangeOfficeDataSet6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -153,8 +171,18 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.operationIdDataGridViewTextBoxColumn,
+            this.operationTypeIdDataGridViewTextBoxColumn,
+            this.userIdDataGridViewTextBoxColumn,
+            this.operationDateDataGridViewTextBoxColumn,
+            this.amountDataGridViewTextBoxColumn,
+            this.currencyFromDataGridViewTextBoxColumn,
+            this.currencyToDataGridViewTextBoxColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
+            this.dataGridView1.DataSource = this.operationsBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 274);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -253,6 +281,91 @@
             this.ShowData.UseVisualStyleBackColor = true;
             this.ShowData.Click += new System.EventHandler(this.ShowData_Click);
             // 
+            // exchangeOfficeDataSet5
+            // 
+            this.exchangeOfficeDataSet5.DataSetName = "ExchangeOfficeDataSet5";
+            this.exchangeOfficeDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // operationsBindingSource
+            // 
+            this.operationsBindingSource.DataMember = "Operations";
+            this.operationsBindingSource.DataSource = this.exchangeOfficeDataSet5;
+            // 
+            // operationsTableAdapter
+            // 
+            this.operationsTableAdapter.ClearBeforeFill = true;
+            // 
+            // exchangeOfficeDataSet6
+            // 
+            this.exchangeOfficeDataSet6.DataSetName = "ExchangeOfficeDataSet6";
+            this.exchangeOfficeDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "Users";
+            this.usersBindingSource.DataSource = this.exchangeOfficeDataSet6;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // operationIdDataGridViewTextBoxColumn
+            // 
+            this.operationIdDataGridViewTextBoxColumn.DataPropertyName = "OperationId";
+            this.operationIdDataGridViewTextBoxColumn.HeaderText = "OperationId";
+            this.operationIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.operationIdDataGridViewTextBoxColumn.Name = "operationIdDataGridViewTextBoxColumn";
+            this.operationIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.operationIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // operationTypeIdDataGridViewTextBoxColumn
+            // 
+            this.operationTypeIdDataGridViewTextBoxColumn.DataPropertyName = "OperationTypeId";
+            this.operationTypeIdDataGridViewTextBoxColumn.HeaderText = "OperationTypeId";
+            this.operationTypeIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.operationTypeIdDataGridViewTextBoxColumn.Name = "operationTypeIdDataGridViewTextBoxColumn";
+            this.operationTypeIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // userIdDataGridViewTextBoxColumn
+            // 
+            this.userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
+            this.userIdDataGridViewTextBoxColumn.HeaderText = "UserId";
+            this.userIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
+            this.userIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // operationDateDataGridViewTextBoxColumn
+            // 
+            this.operationDateDataGridViewTextBoxColumn.DataPropertyName = "OperationDate";
+            this.operationDateDataGridViewTextBoxColumn.HeaderText = "OperationDate";
+            this.operationDateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.operationDateDataGridViewTextBoxColumn.Name = "operationDateDataGridViewTextBoxColumn";
+            this.operationDateDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
+            this.amountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            this.amountDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // currencyFromDataGridViewTextBoxColumn
+            // 
+            this.currencyFromDataGridViewTextBoxColumn.DataPropertyName = "CurrencyFrom";
+            this.currencyFromDataGridViewTextBoxColumn.HeaderText = "CurrencyFrom";
+            this.currencyFromDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.currencyFromDataGridViewTextBoxColumn.Name = "currencyFromDataGridViewTextBoxColumn";
+            this.currencyFromDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // currencyToDataGridViewTextBoxColumn
+            // 
+            this.currencyToDataGridViewTextBoxColumn.DataPropertyName = "CurrencyTo";
+            this.currencyToDataGridViewTextBoxColumn.HeaderText = "CurrencyTo";
+            this.currencyToDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.currencyToDataGridViewTextBoxColumn.Name = "currencyToDataGridViewTextBoxColumn";
+            this.currencyToDataGridViewTextBoxColumn.Width = 125;
+            // 
             // Operations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -262,9 +375,14 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Operations";
             this.Text = "Operations";
+            this.Load += new System.EventHandler(this.Operations_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exchangeOfficeDataSet5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.operationsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exchangeOfficeDataSet6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -288,5 +406,18 @@
         private System.Windows.Forms.ComboBox UserIdCB;
         private System.Windows.Forms.ComboBox CurrencyFromCB;
         private System.Windows.Forms.ComboBox CurrencyToCB;
+        private ExchangeOfficeDataSet5 exchangeOfficeDataSet5;
+        private System.Windows.Forms.BindingSource operationsBindingSource;
+        private ExchangeOfficeDataSet5TableAdapters.OperationsTableAdapter operationsTableAdapter;
+        private ExchangeOfficeDataSet6 exchangeOfficeDataSet6;
+        private System.Windows.Forms.BindingSource usersBindingSource;
+        private ExchangeOfficeDataSet6TableAdapters.UsersTableAdapter usersTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operationIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operationTypeIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operationDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currencyFromDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currencyToDataGridViewTextBoxColumn;
     }
 }
