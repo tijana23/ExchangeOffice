@@ -86,6 +86,7 @@ namespace ExchangeOffice.BLL
             return Update(or);
         }
 
+
         public List<OfficialRate> GetAll()
         {
             table = myExchangeDb.Set<OfficialRate>();

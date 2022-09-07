@@ -30,14 +30,14 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.AmountTB = new System.Windows.Forms.TextBox();
             this.InterestRateTB = new System.Windows.Forms.TextBox();
             this.PeriodTB = new System.Windows.Forms.TextBox();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.CalculateButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -86,6 +86,39 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(195, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 34);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Amount :";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(165, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 34);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Interest Rate :";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(200, 68);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 34);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Period :";
+            // 
             // AmountTB
             // 
             this.AmountTB.Location = new System.Drawing.Point(259, 3);
@@ -107,13 +140,6 @@
             this.PeriodTB.Size = new System.Drawing.Size(100, 22);
             this.PeriodTB.TabIndex = 9;
             // 
-            // dateTimePicker
-            // 
-            this.dateTimePicker.Location = new System.Drawing.Point(259, 105);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker.TabIndex = 11;
-            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -125,38 +151,12 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Date :";
             // 
-            // label3
+            // dateTimePicker
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(200, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 34);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Period :";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(165, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 34);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Interest Rate :";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(195, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 34);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Amount :";
+            this.dateTimePicker.Location = new System.Drawing.Point(259, 105);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker.TabIndex = 11;
             // 
             // CalculateButton
             // 

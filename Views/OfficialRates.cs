@@ -88,17 +88,32 @@ namespace ExchangeOffice
 
         private async void ShowData_Click(object sender, EventArgs e)
         {
-            //OfficialRatesBLL or = new OfficialRatesBLL();
-            //dataGridView1.DataSource = or.ShowData();
-            using (HttpClient client = new HttpClient())
-            {
-                HttpResponseMessage res = await client.GetAsync(baseURL + "OfficialRates");
+            OfficialRatesBLL or = new OfficialRatesBLL();
+            
+            //or.ShowData();
+            //Entity o = new Entity();
+            //var query = from g in o.CLS_Currency
+            //            join m in o.OfficialRates on g.CurrencyId equals m.Currency
+            //            orderby m.OfficialRatesId
+            //            select new
+            //            {
+            //                OfficialRatesId = m.OfficialRatesId,
+            //                ValidityDate = m.ValidityDate,
+            //                Currency = g.Name,
+            //                Rate = m.Rate
+                            
+            //            };
+            dataGridView1.DataSource = or.ShowData();
+                //
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    HttpResponseMessage res = await client.GetAsync(baseURL + "OfficialRates");
 
-                var data = await res.Content.ReadAsStringAsync();
-                var list = JsonConvert.DeserializeObject<List<OfficialRate>>(data);
-                dataGridView1.DataSource = list;
+            //    var data = await res.Content.ReadAsStringAsync();
+            //    var list = JsonConvert.DeserializeObject<List<OfficialRate>>(data);
+            //    dataGridView1.DataSource = list;
 
-            }
+            //}
         }
 
         private void OfficialRates_Load(object sender, EventArgs e)

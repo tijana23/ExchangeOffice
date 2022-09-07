@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -18,7 +19,7 @@ namespace ExchangeOffice
 {
     public partial class Users : System.Windows.Forms.Form
     {
-        private static readonly string baseURL = "https://localhost:44355/";
+        private static readonly string baseURL = ConfigurationManager.AppSettings["baseURL"];
         Entity myExchangeDb = new Entity();
         UsersBLL users = new UsersBLL();
         UsersBLL u = new UsersBLL();
@@ -30,50 +31,59 @@ namespace ExchangeOffice
         private int temp;
         private async void UpdateButton_Click(object sender, EventArgs e)
         {
-            if (NameTB.Text == string.Empty)
+            if (!Regex.Match(NameTB.Text, "[a-zA-Z]").Success || !Regex.Match(SurnameTB.Text, "[a-zA-Z]").Success || IsActiveCB.Text == string.Empty)
             {
-                MessageBox.Show("Please select user");
-            }
-            else if (SurnameTB.Text == string.Empty)
-            {
-                MessageBox.Show("Please select user");
-            }
-            //Debug.Write(NameTB.Text);
-            //Debug.Write(SurnameTB.Text);
-            //Debug.Write(temp);
-            //string result = users.update(temp, NameTB.Text, SurnameTB.Text, IsActiveCB.Checked);
-            //MessageBox.Show(result);
-            //dataGridView1.DataSource = users.ShowData();
-            User user = myExchangeDb.Users.Where(u => u.UsersId == temp).FirstOrDefault();
-            user.Name = NameTB.Text;
-            user.Surname = SurnameTB.Text;
-            if (IsActiveCB.Checked == true)
-            {
-                user.IsActive = 1;
-
+                MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                NameTB.Text = "";
+                SurnameTB.Text = "";
             }
             else
             {
-                user.IsActive = 0;
-            }
-            MessageBox.Show("Succefully updated");
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token.getToken());
-                HttpResponseMessage res = await client.PutAsJsonAsync(baseURL + "Users/" + temp ,user);
-                HttpResponseMessage result = await client.GetAsync(baseURL + "Users");
+                if (NameTB.Text == string.Empty)
+                {
+                    MessageBox.Show("Please select user");
+                }
+                else if (SurnameTB.Text == string.Empty)
+                {
+                    MessageBox.Show("Please select user");
+                }
+                //Debug.Write(NameTB.Text);
+                //Debug.Write(SurnameTB.Text);
+                //Debug.Write(temp);
+                //string result = users.update(temp, NameTB.Text, SurnameTB.Text, IsActiveCB.Checked);
+                //MessageBox.Show(result);
+                //dataGridView1.DataSource = users.ShowData();
+                User user = myExchangeDb.Users.Where(u => u.UsersId == temp).FirstOrDefault();
+                user.Name = NameTB.Text;
+                user.Surname = SurnameTB.Text;
+                if (IsActiveCB.Checked == true)
+                {
+                    user.IsActive = 1;
 
-                var data = await result.Content.ReadAsStringAsync();
-                var list = JsonConvert.DeserializeObject<List<User>>(data);
-                dataGridView1.DataSource = list;
+                }
+                else
+                {
+                    user.IsActive = 0;
+                }
+                MessageBox.Show("Succefully updated");
+                using (HttpClient client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token.getToken());
+                    HttpResponseMessage res = await client.PutAsJsonAsync(baseURL + "Users/" + temp, user);
+                    HttpResponseMessage result = await client.GetAsync(baseURL + "Users");
 
+                    var data = await result.Content.ReadAsStringAsync();
+                    var list = JsonConvert.DeserializeObject<List<User>>(data);
+                    dataGridView1.DataSource = list;
+
+                }
             }
 
         }
 
         private async void InsertButton_Click(object sender, EventArgs e)
         {
-            if (!Regex.Match(NameTB.Text, "[a-zA-Z ]").Success || !Regex.Match(SurnameTB.Text, "[a-zA-Z ]").Success || IsActiveCB.Text == string.Empty)
+            if (!Regex.Match(NameTB.Text, "[a-zA-Z]").Success || !Regex.Match(SurnameTB.Text, "[a-zA-Z]").Success || IsActiveCB.Text == string.Empty)
             {
                 MessageBox.Show("Invalid format.Try again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 NameTB.Text = "";

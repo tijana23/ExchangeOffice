@@ -85,17 +85,17 @@ namespace ExchangeOffice
 
         private async void ShowData_Click(object sender, EventArgs e)
         {
-            //CLS_CurrencyBLL curr = new CLS_CurrencyBLL();
-            //dataGridView1.DataSource = curr.ShowData();
-            using (HttpClient client = new HttpClient())
-            {
-                HttpResponseMessage res = await client.GetAsync(baseURL + "ClsCurrencies");
+            CLS_CurrencyBLL curr = new CLS_CurrencyBLL();
+            dataGridView1.DataSource = curr.ShowData();
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    HttpResponseMessage res = await client.GetAsync(baseURL + "ClsCurrencies");
 
-                var data = await res.Content.ReadAsStringAsync();
-                var list = JsonConvert.DeserializeObject<List<CLS_Currency>>(data);
-                dataGridView1.DataSource = list;
+            //    var data = await res.Content.ReadAsStringAsync();
+            //    var list = JsonConvert.DeserializeObject<List<CLS_Currency>>(data);
+            //    dataGridView1.DataSource = list;
 
-            }
+            //}
 
         }
 
